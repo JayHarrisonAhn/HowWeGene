@@ -11,16 +11,16 @@ class MainViewModel: ObservableObject {
     @Published var currentStep: Step? = .tutorial
     
     enum Step: String, CaseIterable, Identifiable, Hashable {
-        case tutorial = "Tutorial"
-        case dominance = "Dominance Inheritance"
+        case tutorial
+        case completeDominance
         
         var id: String { return self.rawValue }
         var title: String {
             switch self {
             case .tutorial:
-                return "1. Tutorial"
-            case .dominance:
-                return "Basic"
+                return "Tutorial"
+            case .completeDominance:
+                return "1. Complete Dominance"
             }
         }
     }
@@ -28,8 +28,8 @@ class MainViewModel: ObservableObject {
     func moveToNextStep() {
         switch currentStep {
         case .tutorial:
-            currentStep = .dominance
-        case .dominance:
+            currentStep = .completeDominance
+        case .completeDominance:
             break
         case nil:
             break
@@ -79,8 +79,8 @@ struct MainView: View {
         switch step {
         case .tutorial:
             TutorialStep(moveNext: viewModel.moveToNextStep)
-        case .dominance:
-            DominantStep()
+        case .completeDominance:
+            CompleteDominanceStep()
         }
     }
 }
