@@ -8,7 +8,7 @@
 import SwiftUI
 
 class TutorialMainViewModel: ObservableObject {
-    let numOfPage = 3
+    let numOfPage = 5
     @Published var page = 0
 }
 
@@ -27,6 +27,8 @@ struct TutorialStep: View {
                     TutorialContent1().tag(0)
                     TutorialContent2().tag(1)
                     TutorialContent3().tag(2)
+                    TutorialContent4().tag(3)
+                    TutorialContent5().tag(4)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 
