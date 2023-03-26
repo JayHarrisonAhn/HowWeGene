@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialContent2: View {
     var body: some View {
-        ContentBaseView {
+        ContentScrollableView {
             Text("Genes are inherited from one to its child.\n\nThis is why you looks like your parents.")
         }
     }
