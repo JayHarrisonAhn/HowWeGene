@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialContent1: View {
     var body: some View {
-        ContentBaseView {
+        ContentScrollableView {
             VStack(spacing: 70) {
                 Image("Mat1")
                 Text("Every person has ‘gene’s, which is a kind of blueprint of its body.\n\nIt determines characteristics of the body, such as blood type, eye color, and etc.")

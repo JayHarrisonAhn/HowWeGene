@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialContent3: View {
     var body: some View {
-        ContentBaseView {
+        ContentScrollableView {
             VStack(spacing: 70) {
                 Image("curly")
                     .resizable()

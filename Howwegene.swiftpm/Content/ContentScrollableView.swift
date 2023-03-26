@@ -1,5 +1,5 @@
 //
-//  ContentBaseView.swift
+//  ContentScrollableView.swift
 //  Howwegene
 //
 //  Created by Jay Ahn on 2023/03/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentBaseView<Content: View>: View {
+struct ContentScrollableView<Content: View>: View {
     
     let content: () -> Content
     
@@ -28,7 +28,7 @@ struct ContentBaseView<Content: View>: View {
 
 struct TutorialContentBase_Previews: PreviewProvider {
     static var previews: some View {
-        ContentBaseView {
+        ContentScrollableView {
             Image("dna")
                 .resizable()
                 .frame(width: 300, height: 300)

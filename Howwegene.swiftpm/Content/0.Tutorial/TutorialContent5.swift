@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialContent5: View {
     var body: some View {
-        ContentBaseView {
+        ContentScrollableView {
             VStack(spacing: 70) {
                 Text("Let's find out how does Genetics work.")
             }
