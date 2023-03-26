@@ -16,7 +16,7 @@ struct BaseViewSplitted<Content: View>: View {
     ]
     
     var body: some View {
-        BaseView {
+        StepBaseView {
             GeometryReader { proxy in
                 if proxy.size.width < proxy.size.height {
                     VStack {

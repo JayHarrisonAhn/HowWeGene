@@ -1,5 +1,5 @@
 //
-//  TutorialView.swift
+//  TutorialStep.swift
 //  Howwegene
 //
 //  Created by Jay Ahn on 2023/03/24.
@@ -12,7 +12,7 @@ class TutorialMainViewModel: ObservableObject {
     @Published var page = 0
 }
 
-struct TutorialView: View {
+struct TutorialStep: View {
     @StateObject var viewModel = TutorialMainViewModel()
     var moveNext: (()->Void)? = nil
     
@@ -21,14 +21,15 @@ struct TutorialView: View {
     }
     
     var body: some View {
-        BaseView {
+        StepBaseView {
             VStack {
                 TabView(selection: $viewModel.page) {
                     TutorialContent1().tag(0)
-                        .frame(maxWidth: .infinity)
                     TutorialContent2().tag(1)
+                    TutorialContent3().tag(2)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
+                
                 Button("DDD") {
                     withAnimation {
                         turnToNextPage()
@@ -49,6 +50,6 @@ struct TutorialView: View {
 
 struct TurorialView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialView()
+        TutorialStep()
     }
 }

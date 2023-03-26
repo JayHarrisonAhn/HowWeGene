@@ -78,9 +78,9 @@ struct MainView: View {
     private func stepView(_ step: MainViewModel.Step) -> some View {
         switch step {
         case .tutorial:
-            TutorialView(moveNext: viewModel.moveToNextStep)
+            TutorialStep(moveNext: viewModel.moveToNextStep)
         case .dominance:
-            DominantView()
+            DominantStep()
         }
     }
 }

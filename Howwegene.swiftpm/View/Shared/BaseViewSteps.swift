@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct BaseViewSteps: View {
-    
-    
-    var body: some View {
-        BaseView {
-            VStack {
-                Button {
-                } label: {
-                    Text("Next")
-                }
-            }
-        }
-    }
-}
-
-struct BaseViewSteps_Previews: PreviewProvider {
-    static var previews: some View {
-        BaseViewSteps()
-    }
-}
+//struct BaseViewSteps: View {
+//    
+//    
+//    var body: some View {
+//        StepBaseView {
+//            VStack {
+//                Button {
+//                } label: {
+//                    Text("Next")
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//struct BaseViewSteps_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BaseViewSteps()
+//    }
+//}

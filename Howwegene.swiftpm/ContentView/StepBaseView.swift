@@ -1,5 +1,5 @@
 //
-//  BaseView.swift
+//  StepBaseView.swift
 //  Howwegene
 //
 //  Created by Jay Ahn on 2023/03/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BaseView<Content: View>: View {
+struct StepBaseView<Content: View>: View {
     
     let content: () -> Content
     
@@ -44,7 +44,7 @@ struct BaseView<Content: View>: View {
 
 struct BaseView_Previews: PreviewProvider {
     static var previews: some View {
-        BaseView {
+        StepBaseView {
             Text("Hello")
         }
     }
