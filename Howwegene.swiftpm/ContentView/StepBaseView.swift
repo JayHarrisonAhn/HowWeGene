@@ -29,6 +29,7 @@ struct StepBaseView<Content: View>: View {
                     }
                 }.ignoresSafeArea()
                 content()
+                    .frame(maxHeight: 700)
             }.background(.bar)
         }
     }

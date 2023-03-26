@@ -8,7 +8,7 @@
 import SwiftUI
 
 class TutorialMainViewModel: ObservableObject {
-    let numOfPage = 2
+    let numOfPage = 3
     @Published var page = 0
 }
 
@@ -30,11 +30,11 @@ struct TutorialStep: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 
-                Button("DDD") {
+                Button("Next") {
                     withAnimation {
                         turnToNextPage()
                     }
-                }
+                }.buttonStyle(.borderedProminent)
             }
         }
     }

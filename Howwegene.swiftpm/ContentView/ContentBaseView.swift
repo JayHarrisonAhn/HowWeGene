@@ -1,5 +1,5 @@
 //
-//  TutorialContentBase.swift
+//  ContentBaseView.swift
 //  Howwegene
 //
 //  Created by Jay Ahn on 2023/03/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TutorialContentBase<Content: View>: View {
+struct ContentBaseView<Content: View>: View {
     
     let content: () -> Content
     
@@ -28,7 +28,7 @@ struct TutorialContentBase<Content: View>: View {
 
 struct TutorialContentBase_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialContentBase {
+        ContentBaseView {
             Image("dna")
                 .resizable()
                 .frame(width: 300, height: 300)

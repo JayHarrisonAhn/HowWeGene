@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TutorialContent2: View {
     var body: some View {
-        TutorialContentBase {
-            Text("But sometimes, There are some children who don't look like their parents.\n\nFor example, a child may have straight hair while their parents have straight hair.")
+        ContentBaseView {
+            Text("Genes are inherited from one to its children.\n\nThis is why you looks like your parents.")
         }
     }
 }

@@ -9,8 +9,14 @@ import SwiftUI
 
 struct TutorialContent3: View {
     var body: some View {
-        TutorialContentBase {
-            Text("Hello, World!")
+        ContentBaseView {
+            VStack(spacing: 70) {
+                Image("curly")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                Text("But sometimes, There are some children who don't look like their parents.\n\nFor example, a boy may have straight hair, while his parents have curly hair.")
+            }
         }
     }
 }
