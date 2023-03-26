@@ -37,10 +37,6 @@ class MainViewModel: ObservableObject {
     }
 }
 
-protocol Step: Hashable {
-    var path: any Hashable { get }
-}
-
 @available(iOS 16.0, *)
 struct MainView: View {
     @StateObject var viewModel = MainViewModel()
@@ -82,9 +78,9 @@ struct MainView: View {
     private func stepView(_ step: MainViewModel.Step) -> some View {
         switch step {
         case .tutorial:
-            TutorialMainView(moveNext: viewModel.moveToNextStep)
+            TutorialView(moveNext: viewModel.moveToNextStep)
         case .dominance:
-            DominantMainView()
+            DominantView()
         }
     }
 }

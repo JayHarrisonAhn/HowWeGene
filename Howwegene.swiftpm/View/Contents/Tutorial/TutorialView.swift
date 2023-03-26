@@ -1,5 +1,5 @@
 //
-//  TutorialMainView.swift
+//  TutorialView.swift
 //  Howwegene
 //
 //  Created by Jay Ahn on 2023/03/24.
@@ -12,7 +12,7 @@ class TutorialMainViewModel: ObservableObject {
     @Published var page = 0
 }
 
-struct TutorialMainView: View {
+struct TutorialView: View {
     @StateObject var viewModel = TutorialMainViewModel()
     var moveNext: (()->Void)? = nil
     
@@ -49,6 +49,6 @@ struct TutorialMainView: View {
 
 struct TurorialView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialMainView()
+        TutorialView()
     }
 }
