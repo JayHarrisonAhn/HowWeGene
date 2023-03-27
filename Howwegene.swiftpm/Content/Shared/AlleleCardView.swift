@@ -30,7 +30,7 @@ struct AlleleCardView: View {
     var body: some View {
         VStack {
             alleleType.view
-                .font(.system(size: 50))
+                .font(.bold(.system(size: 50))())
         }
         .frame(maxWidth: 100, maxHeight: 100)
         .aspectRatio(1, contentMode: .fit)
