@@ -11,11 +11,21 @@ struct CompleteDominanceContent3: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
-                Image("widowspeak")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200)
-                Text("Whether you have straight or v-shaped is determined by 'Widow's Peak' allele.")
+                HStack {
+                    VStack(spacing: 0) {
+                        AlleleCardView(alleleType: .widowspeakStraight)
+                            .padding()
+                        Text("Straight")
+                            .opacity(0.5)
+                    }
+                    VStack(spacing: 0) {
+                        AlleleCardView(alleleType: .widowspeakVShape)
+                            .padding()
+                        Text("V-Shaped")
+                            .opacity(0.5)
+                    }
+                }
+                Text("There are two kinds of alleles.")
             }
         }
     }

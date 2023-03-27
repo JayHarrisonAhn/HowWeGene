@@ -11,10 +11,6 @@ struct CompleteDominanceContent2: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
-                Image("widowspeak")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200)
                 Text("Whether you have straight or v-shaped is determined by 'Widow's Peak' allele.")
             }
         }
