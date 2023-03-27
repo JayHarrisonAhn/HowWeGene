@@ -13,9 +13,11 @@ struct CompleteDominanceStep: View {
     var body: some View {
         StepBackgroundView {
             StepPageView(
-                numOfPages: 1,
+                numOfPages: 3,
                 pages: {
                     CompleteDominanceContent1().tag(0)
+                    CompleteDominanceContent2().tag(1)
+                    CompleteDominanceContent3().tag(2)
                 },
                 afterLastPage: afterLastPage
             )

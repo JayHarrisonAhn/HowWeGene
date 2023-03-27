@@ -69,6 +69,7 @@ struct MainView: View {
     var currentStepView: some View {
         if let step = viewModel.currentStep {
             stepView(step)
+                .navigationTitle(step.title)
         } else {
             EmptyView()
         }
