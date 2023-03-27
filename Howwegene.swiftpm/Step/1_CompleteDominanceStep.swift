@@ -28,8 +28,6 @@ struct CompleteDominanceStep: View {
                     }
                 }
             )
-        }.onChange(of: currentPage) { newValue in
-            print(newValue)
         }
     }
     
@@ -56,6 +54,7 @@ struct CompleteDominanceStep: View {
         if ![.selectWidowspeak].contains(blockingPage) {
             CompleteDominanceContent2().tag(1)
             CompleteDominanceContent3().tag(2)
+            CompleteDominanceContent4().tag(3)
         }
     }
     
@@ -64,7 +63,7 @@ struct CompleteDominanceStep: View {
         case .selectWidowspeak:
             return 1
         case nil:
-            return 3
+            return 4
         }
     }
 }

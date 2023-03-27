@@ -13,15 +13,17 @@ struct ContentScrollableView<Content: View>: View {
     
     var body: some View {
         GeometryReader { proxy in
-            ScrollView {
+            ScrollView(showsIndicators: true) {
                 VStack(alignment: .center) {
                     Spacer()
                     content()
                         .padding()
                         .frame(maxWidth: 500)
                     Spacer()
-                }.frame(maxWidth: .infinity, minHeight: proxy.size.height)
+                }
+                .frame(maxWidth: proxy.size.width, minHeight: proxy.size.height)
             }
+            .padding(8)
         }
     }
 }
