@@ -8,19 +8,63 @@
 import SwiftUI
 
 struct CompleteDominanceStep: View {
-    var afterLastPage: (()->Void)? = nil
+    var turnToNextStep: (()->Void)? = nil
+    @State var currentPage = 0
+    @State var blocked: Bool = false
     
     var body: some View {
         StepBackgroundView {
             StepPageView(
-                numOfPages: 3,
+                numOfPages: numberOfPresentingPages,
+                currentPage: $currentPage,
                 pages: {
-                    CompleteDominanceContent1().tag(0)
-                    CompleteDominanceContent2().tag(1)
-                    CompleteDominanceContent3().tag(2)
+                    presentingPages
                 },
-                afterLastPage: afterLastPage
+                afterLastPage: {
+                    if blockingPage == nil {
+                        turnToNextStep?()
+                    } else {
+                        blocked = true
+                    }
+                }
             )
+        }.onChange(of: currentPage) { newValue in
+            print(newValue)
+        }
+    }
+    
+    @State var blockingPage: BlockingPage? = .selectWidowspeak
+    enum BlockingPage {
+        case selectWidowspeak
+    }
+    
+    @ViewBuilder
+    var presentingPages: some View {
+        CompleteDominanceContent1(
+            blocked: blocked,
+            afterSuccess: {
+                blockingPage = nil
+                blocked = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation {
+                        blockingPage = nil
+                        currentPage += 1
+                    }
+                }
+            }
+        ).tag(0)
+        if ![.selectWidowspeak].contains(blockingPage) {
+            CompleteDominanceContent2().tag(1)
+            CompleteDominanceContent3().tag(2)
+        }
+    }
+    
+    var numberOfPresentingPages: Int {
+        switch blockingPage {
+        case .selectWidowspeak:
+            return 1
+        case nil:
+            return 3
         }
     }
 }

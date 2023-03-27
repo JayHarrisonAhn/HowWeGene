@@ -17,35 +17,55 @@ class CompleteDominanceContent1ViewModel: ObservableObject {
 }
 
 struct CompleteDominanceContent1: View {
-    let viewModel = CompleteDominanceContent1ViewModel()
+    @StateObject var viewModel = CompleteDominanceContent1ViewModel()
+    var blocked: Bool = false
+    var afterSuccess: (() -> Void)?
     
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
-                
                 HStack {
                     Button {
-                        viewModel.widowsPeak = .straight
+                        onSelectWidowspeak(.straight)
                     } label: {
-                        Image("widowspeak_s")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                    }.buttonStyle(.bordered)
+                        ZStack {
+                            Image("widowspeak_s")
+                                .resizable()
+                                .scaledToFit()
+                            if viewModel.widowsPeak == .straight {
+                                Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .scaledToFit()
+                            }
+                        }
+                    }
+                    .frame(width: 100)
+                    .buttonStyle(.bordered)
                     Button {
-                        viewModel.widowsPeak = .vShaped
+                        onSelectWidowspeak(.vShaped)
                     } label: {
-                        Image("widowspeak_v")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                    }.buttonStyle(.bordered)
-                }
+                        ZStack {
+                            Image("widowspeak_v")
+                                .resizable()
+                                .scaledToFit()
+                            if viewModel.widowsPeak == .vShaped {
+                                Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .scaledToFit()
+                            }
+                        }
+                    }
+                    .frame(width: 100)
+                    .buttonStyle(.bordered)
+                }.border(blocked ? .red : .clear)
                 Text("There are 2 shapes of the headline on the forehead - Straight and V-Shaped.\n\nSelect yours on the above images.")
             }
-        }.onAppear {
-            print("Perform")
         }
+    }
+    
+    func onSelectWidowspeak(_ widowspeak: CompleteDominanceContent1ViewModel.WidowsPeak) {
+        viewModel.widowsPeak = widowspeak
+        afterSuccess?()
     }
 }
 

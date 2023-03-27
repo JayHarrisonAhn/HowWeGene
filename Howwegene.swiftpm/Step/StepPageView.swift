@@ -9,17 +9,19 @@ import SwiftUI
 
 struct StepPageView<Content: View>: View {
     let numOfPages: Int
-    @State var currentPage = 0
+    @Binding var currentPage: Int
     
     var pages: () -> Content
     var afterLastPage: (()->Void)?
     
     init(
         numOfPages: Int,
+        currentPage: Binding<Int>,
         @ViewBuilder pages: @escaping () -> Content,
         afterLastPage: (() -> Void)? = nil
     ) {
         self.numOfPages = numOfPages
+        self._currentPage = currentPage
         self.pages = pages
         self.afterLastPage = afterLastPage
     }
@@ -50,7 +52,7 @@ struct StepPageView<Content: View>: View {
 
 struct StepPage_Previews: PreviewProvider {
     static var previews: some View {
-        StepPageView(numOfPages: 3) {
+        StepPageView(numOfPages: 3, currentPage: .constant(0)) {
             Text("Hello").tag(0)
             Text("World").tag(1)
             Text("3").tag(2)
