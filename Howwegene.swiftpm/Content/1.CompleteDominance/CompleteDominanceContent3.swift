@@ -13,13 +13,17 @@ struct CompleteDominanceContent3: View {
             VStack(spacing: 70) {
                 HStack {
                     VStack(spacing: 0) {
-                        WidowsPeak.vShaped.cardView
+                        AlleleView<WidowsPeak>(
+                            allele: WidowsPeak.vShaped
+                        )
                             .padding()
                         Text("V-Shaped")
                             .opacity(0.5)
                     }
                     VStack(spacing: 0) {
-                        WidowsPeak.straight.cardView
+                        AlleleView<WidowsPeak>(
+                            allele: WidowsPeak.straight
+                        )
                             .padding()
                         Text("Straight")
                             .opacity(0.5)

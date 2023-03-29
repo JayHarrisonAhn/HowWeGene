@@ -12,12 +12,16 @@ struct CompleteDominanceContent6: View {
         ContentScrollableView {
             VStack(spacing: 30) {
                 HStack(spacing: 20) {
-                    WidowsPeak.vShaped.cardView
+                    AlleleView<WidowsPeak>(
+                        allele: WidowsPeak.vShaped
+                    )
                     Image(systemName: "greaterthan")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30)
-                    WidowsPeak.straight.cardView
+                    AlleleView<WidowsPeak>(
+                        allele: WidowsPeak.straight
+                    )
                 }
                 Text("In 'Complete Dominance' rule, ")
             }

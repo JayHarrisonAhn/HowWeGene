@@ -12,17 +12,17 @@ struct CompleteDominanceContent4: View {
         ContentScrollableView {
             VStack(spacing: 100) {
                 VStack(spacing: 30) {
-                    Genotype(
-                        firstAllele: WidowsPeak.vShaped,
-                        secondAllele: WidowsPeak.vShaped
-                    ).view
+                    GenotypeView<WidowsPeak>(
+                        leftAllele: WidowsPeak.vShaped,
+                        rightAllele: WidowsPeak.vShaped
+                    )
                     Text("If a person has two v-shaped alleles,\nhe/she will have v-shaped hairline.")
                 }
                 VStack(spacing: 30) {
-                    Genotype(
-                        firstAllele: WidowsPeak.straight,
-                        secondAllele: WidowsPeak.straight
-                    ).view
+                    GenotypeView<WidowsPeak>(
+                        leftAllele: WidowsPeak.straight,
+                        rightAllele: WidowsPeak.straight
+                    )
                     Text("Of course, if he/she has two straight alleles,\nthe hairline would be straight.")
                 }
             }

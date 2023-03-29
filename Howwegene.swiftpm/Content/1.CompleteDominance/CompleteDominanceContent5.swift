@@ -11,10 +11,10 @@ struct CompleteDominanceContent5: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Genotype(
-                    firstAllele: WidowsPeak.vShaped,
-                    secondAllele: WidowsPeak.straight
-                ).view
+                GenotypeView<WidowsPeak>(
+                    leftAllele: WidowsPeak.vShaped,
+                    rightAllele: WidowsPeak.straight
+                )
                 Text("Then, what if he/she has two different alleles?")
             }
         }
