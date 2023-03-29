@@ -7,23 +7,36 @@
 
 import SwiftUI
 
+class GeneQuizStepViewModel: ObservableObject {
+    @Published var allele: any Allele.Type = WidowsPeak.self
+    
+    let alleles: [any Allele.Type] = [
+        WidowsPeak.self,
+        TongueRolling.self
+    ]
+    
+    func changeQuiz() {
+        allele = alleles.filter {
+            allele != $0
+        }.randomElement()!.self
+    }
+}
+
 struct GeneQuizStep: View {
+    @StateObject var viewModel = GeneQuizStepViewModel()
+    
     var body: some View {
         StepBackgroundView {
             VStack {
-                ParentsPedigreeView<WidowsPeak>(
-                    parents: ParentsPedigree(
-                        dad: Genotype(
-                            firstAllele: .straight,
-                            secondAllele: .vShaped
-                        ),
-                        mom: Genotype(
-                            firstAllele: .straight,
-                            secondAllele: .vShaped
-                        )
-                    )
-                )
-                Text("Choose all available children.")
+                switch viewModel.allele {
+                case is WidowsPeak.Type:
+                    GeneQuizWidowsPeak()
+                default:
+                    EmptyView()
+                }
+                Button("Test") {
+                    viewModel.changeQuiz()
+                }
             }
         }
     }

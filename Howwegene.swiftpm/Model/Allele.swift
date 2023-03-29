@@ -7,4 +7,4 @@
 
 import SwiftUI
 
-protocol Allele { }
+protocol Allele: CaseIterable { }
