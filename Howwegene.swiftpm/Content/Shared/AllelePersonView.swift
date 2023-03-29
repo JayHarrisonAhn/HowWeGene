@@ -2,24 +2,14 @@
 //  AllelePersonView.swift
 //  Howwegene
 //
-//  Created by Jay Ahn on 2023/03/27.
+//  Created by Jay Ahn on 2023/03/29.
 //
 
 import SwiftUI
 
-struct AllelePersonView: View {
-    let alleles: (
-        AlleleCardView.AlleleType,
-        AlleleCardView.AlleleType
-    )
-    
-    init(
-        first: AlleleCardView.AlleleType,
-        second: AlleleCardView.AlleleType
-    ) {
-        self.alleles = (first, second)
-    }
-    
+struct AllelePersonView<Content: View>: View {
+    @ViewBuilder let leftView: () -> Content
+    @ViewBuilder let rightView: () -> Content
     var body: some View {
         VStack {
             Image(systemName: "person")
@@ -27,8 +17,8 @@ struct AllelePersonView: View {
                 .scaledToFit()
                 .frame(maxWidth: 50)
             HStack {
-                AlleleCardView(alleleType: alleles.0)
-                AlleleCardView(alleleType: alleles.1)
+                leftView()
+                rightView()
             }
         }
         .padding()
@@ -39,11 +29,11 @@ struct AllelePersonView: View {
     }
 }
 
-struct AllelePersonView_Previews: PreviewProvider {
+struct NewAllelePersonView_Previews: PreviewProvider {
     static var previews: some View {
-        AllelePersonView(
-            first: .widowspeakVShape,
-            second: .widowspeakStraight
-        )
+        Genotype(
+            firstAllele: WidowsPeak.straight,
+            secondAllele: WidowsPeak.vShaped
+        ).view
     }
 }

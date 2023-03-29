@@ -11,12 +11,15 @@ class MainViewModel: ObservableObject {
     @Published var currentStep: Step? = .tutorial
     
     enum Step: String, CaseIterable, Identifiable, Hashable {
+        case geneQuiz
         case tutorial
         case completeDominance
         
         var id: String { return self.rawValue }
         var title: String {
             switch self {
+            case .geneQuiz:
+                return "Gene Quiz"
             case .tutorial:
                 return "Tutorial"
             case .completeDominance:
@@ -27,6 +30,8 @@ class MainViewModel: ObservableObject {
     
     func moveToNextStep() {
         switch currentStep {
+        case .geneQuiz:
+            currentStep = .tutorial
         case .tutorial:
             currentStep = .completeDominance
         case .completeDominance:
@@ -78,6 +83,8 @@ struct MainView: View {
     @ViewBuilder
     private func stepView(_ step: MainViewModel.Step) -> some View {
         switch step {
+        case .geneQuiz:
+            GeneQuizStep()
         case .tutorial:
             TutorialStep(turnToNextStep: viewModel.moveToNextStep)
         case .completeDominance:

@@ -2,34 +2,16 @@
 //  AlleleCardView.swift
 //  Howwegene
 //
-//  Created by Jay Ahn on 2023/03/27.
+//  Created by Jay Ahn on 2023/03/29.
 //
 
 import SwiftUI
 
-struct AlleleCardView: View {
-    var alleleType: AlleleType
-    enum AlleleType {
-        case widowspeakStraight
-        case widowspeakVShape
-        case custom(String)
-        
-        @ViewBuilder
-        var view: some View {
-            switch self {
-            case .widowspeakStraight:
-                Text("S")
-            case .widowspeakVShape:
-                Text("V")
-            case .custom(let string):
-                Text(string)
-            }
-        }
-    }
-    
+struct AlleleCardView<Content: View>: View {
+    @ViewBuilder let content: () -> Content
     var body: some View {
         VStack {
-            alleleType.view
+            content()
                 .font(.bold(.system(size: 50))())
         }
         .frame(maxWidth: 100, maxHeight: 100)
@@ -41,11 +23,10 @@ struct AlleleCardView: View {
     }
 }
 
-struct AlleleCardView_Previews: PreviewProvider {
+struct NewAlleleCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HStack {
-            AlleleCardView(alleleType: .widowspeakStraight)
-//            AlleleCardView(alleleType: .widowspeakVShape)
+        AlleleCardView {
+            Text("H")
         }
     }
 }
