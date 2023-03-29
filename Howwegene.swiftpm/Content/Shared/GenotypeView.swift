@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct GenotypeView<AlleleType: Allele>: View {
-    let leftAllele: any Allele
-    let rightAllele: any Allele
+    let person: Person
+    let genotype: Genotype<AlleleType>
+    
     var body: some View {
         VStack {
-            Image(systemName: "person")
-                .resizable()
+            icon
                 .scaledToFit()
                 .frame(maxWidth: 50)
             HStack {
-                AlleleView<AlleleType>(allele: leftAllele)
-                AlleleView<AlleleType>(allele: rightAllele)
+                AlleleView<AlleleType>(allele: genotype.firstAllele)
+                AlleleView<AlleleType>(allele: genotype.secondAllele)
             }
         }
         .padding()
@@ -27,13 +27,34 @@ struct GenotypeView<AlleleType: Allele>: View {
                 .stroke(.primary, lineWidth: 3)
         )
     }
+    
+    @ViewBuilder
+    var icon: some View {
+        switch person {
+        case .human:
+            Image(systemName: "person").resizable()
+        case .man:
+            Image("icon_dad").resizable()
+        case .woman:
+            Image("icon_mom").resizable()
+        }
+    }
+    
+    enum Person {
+        case man
+        case woman
+        case human
+    }
 }
 
 struct NewAllelePersonView_Previews: PreviewProvider {
     static var previews: some View {
         GenotypeView<WidowsPeak>(
-            leftAllele: WidowsPeak.vShaped,
-            rightAllele: WidowsPeak.straight
+            person: .human,
+            genotype: Genotype(
+                firstAllele: .straight,
+                secondAllele: .vShaped
+            )
         )
     }
 }

@@ -12,8 +12,11 @@ struct CompleteDominanceContent5: View {
         ContentScrollableView {
             VStack(spacing: 30) {
                 GenotypeView<WidowsPeak>(
-                    leftAllele: WidowsPeak.vShaped,
-                    rightAllele: WidowsPeak.straight
+                    person: .human,
+                    genotype: Genotype(
+                        firstAllele: .vShaped,
+                        secondAllele: .straight
+                    )
                 )
                 Text("Then, what if he/she has two different alleles?")
             }

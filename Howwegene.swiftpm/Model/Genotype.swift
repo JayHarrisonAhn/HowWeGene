@@ -8,6 +8,6 @@
 import SwiftUI
 
 struct Genotype<AlleleType: Allele> {
-    var firstAllele: AlleleType
-    var secondAllele: AlleleType
+    let firstAllele: AlleleType
+    let secondAllele: AlleleType
 }

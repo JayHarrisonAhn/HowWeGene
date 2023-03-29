@@ -11,6 +11,18 @@ struct GeneQuizStep: View {
     var body: some View {
         StepBackgroundView {
             VStack {
+                ParentsPedigreeView<WidowsPeak>(
+                    parents: ParentsPedigree(
+                        dad: Genotype(
+                            firstAllele: .straight,
+                            secondAllele: .vShaped
+                        ),
+                        mom: Genotype(
+                            firstAllele: .straight,
+                            secondAllele: .vShaped
+                        )
+                    )
+                )
                 Text("Choose all available children.")
             }
         }
