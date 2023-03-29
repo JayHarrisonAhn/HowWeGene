@@ -15,16 +15,14 @@ struct GeneQuizView<AlleleType: Allele>: View {
     @StateObject var viewModel = GeneQuizViewModel<AlleleType>()
     
     var body: some View {
-        StepBackgroundView {
-            VStack {
-                ParentsPedigreeView<AlleleType>(
-                    parents: viewModel.parents
-                )
-                Spacer()
-                    .frame(maxHeight: 200)
-                Text("Choose all available children.")
-            }.padding()
-        }
+        VStack {
+            ParentsPedigreeView<AlleleType>(
+                parents: viewModel.parents
+            )
+            Spacer()
+                .frame(maxHeight: 200)
+            Text("Choose all available children.")
+        }.padding()
     }
 }
 

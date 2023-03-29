@@ -25,10 +25,10 @@ struct AlleleView<AlleleType: Allele>: View {
     @ViewBuilder var innerView: some View {
         if let allele = allele as? WidowsPeak {
             switch allele {
-            case .straight:
-                Text("S")
             case .vShaped:
-                Text("V")
+                Text("W")
+            case .straight:
+                Text("w")
             }
         } else {
             Image(systemName: "questionmark")
