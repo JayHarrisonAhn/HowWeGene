@@ -23,4 +23,13 @@ struct ParentsPedigree<AlleleType: Allele> {
             )
         )
     }
+    
+    func possibleChildren() -> Set<Genotype<AlleleType>> {
+        return [
+            Genotype(firstAllele: dad.firstAllele, secondAllele: mom.firstAllele),
+            Genotype(firstAllele: dad.firstAllele, secondAllele: mom.secondAllele),
+            Genotype(firstAllele: dad.secondAllele, secondAllele: mom.firstAllele),
+            Genotype(firstAllele: dad.secondAllele, secondAllele: mom.secondAllele),
+        ]
+    }
 }

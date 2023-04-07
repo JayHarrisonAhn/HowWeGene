@@ -7,7 +7,13 @@
 
 import SwiftUI
 
-struct Genotype<AlleleType: Allele> {
+struct Genotype<AlleleType: Allele>: Equatable, Hashable {
     let firstAllele: AlleleType
     let secondAllele: AlleleType
+    
+    static func ==(lhs: Genotype, rhs: Genotype) -> Bool {
+        let left: Set = [lhs.firstAllele, lhs.secondAllele]
+        let right: Set = [rhs.firstAllele, rhs.secondAllele]
+        return left == right
+    }
 }

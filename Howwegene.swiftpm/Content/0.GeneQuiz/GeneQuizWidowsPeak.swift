@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct GeneQuizWidowsPeak: View {
+    let parents = ParentsPedigree<WidowsPeak>.random()
+    
     var body: some View {
         ContentScrollableView {
-            GeneQuizView<WidowsPeak>()
+            VStack(spacing: 15) {
+                GeneQuizView<WidowsPeak>(parents: parents)
+                
+            }
         }
     }
 }

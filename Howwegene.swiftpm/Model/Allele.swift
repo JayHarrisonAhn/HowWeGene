@@ -7,4 +7,7 @@
 
 import SwiftUI
 
-protocol Allele: CaseIterable { }
+protocol Allele: CaseIterable, Equatable, Hashable {
+    var title: String { get }
+    static func revealing(genotype: Genotype<Self>) -> Self
+}
