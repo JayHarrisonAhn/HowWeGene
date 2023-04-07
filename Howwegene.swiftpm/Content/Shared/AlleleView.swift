@@ -9,10 +9,20 @@ import SwiftUI
 
 struct AlleleView<AlleleType: Allele>: View {
     let allele: any Allele
+    var showComment: Bool
+    
+    init(allele: any Allele, showComment: Bool = false) {
+        self.allele = allele
+        self.showComment = showComment
+    }
     var body: some View {
         VStack {
             innerView
                 .font(.bold(.system(size: 50))())
+            if showComment {
+                Text("(\(comment))")
+                    .foregroundColor(.gray)
+            }
         }
         .frame(maxWidth: 100, maxHeight: 100)
         .aspectRatio(1, contentMode: .fit)
@@ -34,10 +44,23 @@ struct AlleleView<AlleleType: Allele>: View {
             Image(systemName: "questionmark")
         }
     }
+    
+    var comment: String {
+        if let allele = allele as? WidowsPeak {
+            switch allele {
+            case .vShaped:
+                return "v-shaped"
+            case .straight:
+                return "straight"
+            }
+        } else {
+            return ""
+        }
+    }
 }
 
-struct NewAlleleCardView_Previews: PreviewProvider {
+struct AlleleView_Previews: PreviewProvider {
     static var previews: some View {
-        AlleleView<WidowsPeak>(allele: WidowsPeak.straight)
+        AlleleView<WidowsPeak>(allele: WidowsPeak.straight, showComment: true)
     }
 }

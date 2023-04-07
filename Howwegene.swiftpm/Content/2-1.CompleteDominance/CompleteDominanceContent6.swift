@@ -13,17 +13,19 @@ struct CompleteDominanceContent6: View {
             VStack(spacing: 30) {
                 HStack(spacing: 20) {
                     AlleleView<WidowsPeak>(
-                        allele: WidowsPeak.vShaped
+                        allele: WidowsPeak.vShaped,
+                        showComment: true
                     )
                     Image(systemName: "greaterthan")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30)
                     AlleleView<WidowsPeak>(
-                        allele: WidowsPeak.straight
+                        allele: WidowsPeak.straight,
+                        showComment: true
                     )
                 }
-                Text("In 'Complete Dominance' rule, ")
+                Text("In 'Complete Dominance' rule, V-shaped allele wins straight allele.")
             }
         }
     }
