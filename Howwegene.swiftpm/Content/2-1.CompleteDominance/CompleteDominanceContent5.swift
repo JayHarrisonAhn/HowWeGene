@@ -11,14 +11,21 @@ struct CompleteDominanceContent5: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                GenotypeView<WidowsPeak>(
-                    person: .human,
-                    genotype: Genotype(
-                        firstAllele: .vShaped,
-                        secondAllele: .straight
+                HStack(spacing: 20) {
+                    AlleleView<WidowsPeak>(
+                        allele: WidowsPeak.vShaped,
+                        showComment: true
                     )
-                )
-                Text("Then, what if he/she has two different alleles?")
+                    Image(systemName: "greaterthan")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30)
+                    AlleleView<WidowsPeak>(
+                        allele: WidowsPeak.straight,
+                        showComment: true
+                    )
+                }
+                Text("In 'Complete Dominance' rule, V-shaped allele wins straight allele.")
             }
         }
     }

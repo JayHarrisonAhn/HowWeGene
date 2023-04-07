@@ -10,27 +10,16 @@ import SwiftUI
 struct CompleteDominanceContent4: View {
     var body: some View {
         ContentScrollableView {
-            VStack(spacing: 100) {
-                VStack(spacing: 30) {
-                    GenotypeView<WidowsPeak>(
-                        person: .human,
-                        genotype: Genotype(
-                            firstAllele: .vShaped,
-                            secondAllele: .vShaped
-                        )
-                    )
-                    Text("If a person has two v-shaped alleles,\nhe/she will have v-shaped hairline.")
-                }
-                VStack(spacing: 30) {
-                    GenotypeView<WidowsPeak>(
-                        person: .human,
-                        genotype: Genotype(
-                            firstAllele: .straight,
-                            secondAllele: .straight
-                        )
-                    )
-                    Text("Of course, if he/she has two straight alleles,\nthe hairline would be straight.")
-                }
+            VStack(spacing: 30) {
+                GenotypeView<WidowsPeak>(
+                    person: .human,
+                    genotype: Genotype(
+                        firstAllele: .vShaped,
+                        secondAllele: .straight
+                    ),
+                    showAlleleComment: true
+                )
+                Text("Then, what if he/she has two different alleles?")
             }
         }
     }

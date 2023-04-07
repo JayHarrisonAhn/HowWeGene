@@ -22,6 +22,7 @@ struct AlleleView<AlleleType: Allele>: View {
             if showComment {
                 Text("(\(comment))")
                     .foregroundColor(.gray)
+                    .font(.system(size: 14))
             }
         }
         .frame(maxWidth: 100, maxHeight: 100)

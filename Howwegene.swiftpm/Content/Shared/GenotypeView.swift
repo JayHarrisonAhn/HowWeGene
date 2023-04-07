@@ -9,7 +9,19 @@ import SwiftUI
 
 struct GenotypeView<AlleleType: Allele>: View {
     let person: Person
+    
     let genotype: Genotype<AlleleType>
+    let showAlleleComment: Bool
+    
+    init(
+        person: Person,
+        genotype: Genotype<AlleleType>,
+        showAlleleComment: Bool = false
+    ) {
+        self.person = person
+        self.genotype = genotype
+        self.showAlleleComment = showAlleleComment
+    }
     
     var body: some View {
         VStack {
@@ -17,8 +29,14 @@ struct GenotypeView<AlleleType: Allele>: View {
                 .scaledToFit()
                 .frame(maxWidth: 50)
             HStack {
-                AlleleView<AlleleType>(allele: genotype.firstAllele)
-                AlleleView<AlleleType>(allele: genotype.secondAllele)
+                AlleleView<AlleleType>(
+                    allele: genotype.firstAllele,
+                    showComment: showAlleleComment
+                )
+                AlleleView<AlleleType>(
+                    allele: genotype.secondAllele,
+                    showComment: showAlleleComment
+                )
             }
         }
         .padding()

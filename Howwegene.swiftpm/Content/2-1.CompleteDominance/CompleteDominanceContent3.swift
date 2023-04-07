@@ -2,7 +2,7 @@
 //  CompleteDominanceContent3.swift
 //  Howwegene
 //
-//  Created by Jay Ahn on 2023/03/26.
+//  Created by Jay Ahn on 2023/03/27.
 //
 
 import SwiftUI
@@ -10,26 +10,29 @@ import SwiftUI
 struct CompleteDominanceContent3: View {
     var body: some View {
         ContentScrollableView {
-            VStack(spacing: 70) {
-                HStack {
-                    VStack(spacing: 0) {
-                        AlleleView<WidowsPeak>(
-                            allele: WidowsPeak.vShaped
-                        )
-                            .padding()
-                        Text("V-Shaped")
-                            .opacity(0.5)
-                    }
-                    VStack(spacing: 0) {
-                        AlleleView<WidowsPeak>(
-                            allele: WidowsPeak.straight
-                        )
-                            .padding()
-                        Text("Straight")
-                            .opacity(0.5)
-                    }
+            VStack(spacing: 100) {
+                VStack(spacing: 30) {
+                    GenotypeView<WidowsPeak>(
+                        person: .human,
+                        genotype: Genotype(
+                            firstAllele: .vShaped,
+                            secondAllele: .vShaped
+                        ),
+                        showAlleleComment: true
+                    )
+                    Text("If a person has two v-shaped alleles,\nhe/she will have v-shaped hairline.")
                 }
-                Text("There are two kinds of alleles.")
+                VStack(spacing: 30) {
+                    GenotypeView<WidowsPeak>(
+                        person: .human,
+                        genotype: Genotype(
+                            firstAllele: .straight,
+                            secondAllele: .straight
+                        ),
+                        showAlleleComment: true
+                    )
+                    Text("Of course, if he/she has two straight alleles,\nthe hairline would be straight.")
+                }
             }
         }
     }
