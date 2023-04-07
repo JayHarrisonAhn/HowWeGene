@@ -56,6 +56,7 @@ struct CompleteDominanceStep: View {
             CompleteDominanceContent3().tag(2)
             CompleteDominanceContent4().tag(3)
             CompleteDominanceContent5().tag(4)
+            CompleteDominanceContent6().tag(5)
         }
     }
     

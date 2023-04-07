@@ -23,7 +23,7 @@ class MainViewModel: ObservableObject {
             case .tutorial:
                 return "Tutorial"
             case .completeDominance:
-                return "1. Complete Dominance"
+                return "2-1. Complete Dominance"
             }
         }
     }

@@ -16,14 +16,20 @@ struct ParentsPedigreeView<AlleleType: Allele>: View {
                 spacing: 0
             ) {
                 GenotypeView(
-                    person: .man,
-                    genotype: parents.dad
+                    personView: {
+                        GenotypePersonView(person: .human)
+                    },
+                    genotype: parents.dad,
+                    showAlleleComment: true
                 )
                 Rectangle()
                     .frame(maxWidth: 60, maxHeight: 3)
                 GenotypeView(
-                    person: .woman,
-                    genotype: parents.mom
+                    personView: {
+                        GenotypePersonView(person: .human)
+                    },
+                    genotype: parents.mom,
+                    showAlleleComment: true
                 )
             }.overlay {
                 GeometryReader { proxy in

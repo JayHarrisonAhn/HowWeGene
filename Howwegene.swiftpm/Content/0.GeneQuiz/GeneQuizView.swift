@@ -15,12 +15,11 @@ struct GeneQuizView<AlleleType: Allele>: View {
     @StateObject var viewModel = GeneQuizViewModel<AlleleType>()
     
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
+            Text("If parents have genotypes like a picture below,")
             ParentsPedigreeView<AlleleType>(
                 parents: viewModel.parents
             )
-            Spacer()
-                .frame(maxHeight: 200)
             Text("Choose all available children.")
         }.padding()
     }

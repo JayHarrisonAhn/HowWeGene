@@ -12,9 +12,13 @@ struct CompleteDominanceContent3: View {
         ContentScrollableView {
             VStack(spacing: 100) {
                 VStack(spacing: 30) {
-                    GenotypeView<WidowsPeak>(
-                        person: .human,
-                        genotype: Genotype(
+                    GenotypeView(
+                        personView: {
+                            Image("widowspeak_v")
+                                .resizable()
+                                .scaledToFit()
+                        },
+                        genotype: Genotype<WidowsPeak>(
                             firstAllele: .vShaped,
                             secondAllele: .vShaped
                         ),
@@ -23,9 +27,13 @@ struct CompleteDominanceContent3: View {
                     Text("If a person has two v-shaped alleles,\nhe/she will have v-shaped hairline.")
                 }
                 VStack(spacing: 30) {
-                    GenotypeView<WidowsPeak>(
-                        person: .human,
-                        genotype: Genotype(
+                    GenotypeView(
+                        personView: {
+                            Image("widowspeak_s")
+                                .resizable()
+                                .scaledToFit()
+                        },
+                        genotype: Genotype<WidowsPeak>(
                             firstAllele: .straight,
                             secondAllele: .straight
                         ),

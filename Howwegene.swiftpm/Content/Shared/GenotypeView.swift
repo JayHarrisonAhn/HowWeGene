@@ -7,25 +7,15 @@
 
 import SwiftUI
 
-struct GenotypeView<AlleleType: Allele>: View {
-    let person: Person
+struct GenotypeView<AlleleType: Allele, Content: View>: View {
     
+    let personView: () -> Content
     let genotype: Genotype<AlleleType>
     let showAlleleComment: Bool
     
-    init(
-        person: Person,
-        genotype: Genotype<AlleleType>,
-        showAlleleComment: Bool = false
-    ) {
-        self.person = person
-        self.genotype = genotype
-        self.showAlleleComment = showAlleleComment
-    }
-    
     var body: some View {
         VStack {
-            icon
+            personView()
                 .scaledToFit()
                 .frame(maxWidth: 50)
             HStack {
@@ -45,9 +35,17 @@ struct GenotypeView<AlleleType: Allele>: View {
                 .stroke(.primary, lineWidth: 3)
         )
     }
+}
+
+struct GenotypePersonView: View {
+    let person: Person
+    enum Person {
+        case man
+        case woman
+        case human
+    }
     
-    @ViewBuilder
-    var icon: some View {
+    var body: some View {
         switch person {
         case .human:
             Image(systemName: "person").resizable()
@@ -57,22 +55,19 @@ struct GenotypeView<AlleleType: Allele>: View {
             Image("icon_mom").resizable()
         }
     }
-    
-    enum Person {
-        case man
-        case woman
-        case human
-    }
 }
 
 struct NewAllelePersonView_Previews: PreviewProvider {
     static var previews: some View {
-        GenotypeView<WidowsPeak>(
-            person: .human,
+        GenotypeView<WidowsPeak, GenotypePersonView>(
+            personView: {
+                GenotypePersonView(person: .human)
+            },
             genotype: Genotype(
                 firstAllele: .straight,
                 secondAllele: .vShaped
-            )
+            ),
+            showAlleleComment: true
         )
     }
 }
