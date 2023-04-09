@@ -11,7 +11,7 @@ struct TutorialContent4: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
-                Text("This is weird. Some characteristics are inherited, and some aren't.")
+                Text("This is weird.\nSome characteristics are inherited, and some aren't.")
             }
         }
     }

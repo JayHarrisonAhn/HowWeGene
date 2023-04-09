@@ -41,51 +41,49 @@ struct GeneQuizView<AlleleType: Allele>: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 30) {
-                Text("If parents have genotypes like a picture below,")
-                VStack(spacing: 0) {
-                    ParentsPedigreeView<AlleleType>(
-                        parents: viewModel.parents
-                    )
-                    Rectangle()
-                        .frame(maxWidth: 3, maxHeight: 30)
-                    
-                    Image(systemName: "questionmark")
-                        .resizable()
-                        .scaledToFit()
-                        .padding()
-                        .frame(maxWidth: 60, maxHeight: 60)
-                        .aspectRatio(1, contentMode: .fit)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(.primary, lineWidth: 2)
-                        )
-                }
-                Text("Choose all characteristics that their children can have.")
+        VStack(spacing: 30) {
+            Text("If parents have genotypes like a picture below,")
+            VStack(spacing: 0) {
+                ParentsPedigreeView<AlleleType>(
+                    parents: viewModel.parents
+                )
+                Rectangle()
+                    .frame(maxWidth: 3, maxHeight: 30)
                 
-                HStack {
-                    ForEach(0 ..< viewModel.checkingAlleles.count, id: \.self) { index in
-                        revealCheckButton(index: index)
-                    }
+                Image(systemName: "questionmark")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                    .frame(maxWidth: 60, maxHeight: 60)
+                    .aspectRatio(1, contentMode: .fit)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.primary, lineWidth: 2)
+                    )
+            }
+            Text("Choose all characteristics that their children can have.")
+            
+            HStack {
+                ForEach(0 ..< viewModel.checkingAlleles.count, id: \.self) { index in
+                    revealCheckButton(index: index)
                 }
-                if viewModel.showAnswer {
-                    if viewModel.checkAnswer() {
-                        Button("Correct!") {
-                            viewModel.showAnswer = false
-                        }.foregroundColor(.green)
-                    } else {
-                        Button("Wrong - Try again") {
-                            viewModel.showAnswer = false
-                        }.foregroundColor(.red)
-                    }
+            }
+            if viewModel.showAnswer {
+                if viewModel.checkAnswer() {
+                    Button("Correct!") {
+                        viewModel.showAnswer = false
+                    }.foregroundColor(.green)
                 } else {
-                    Button("Check the answer") {
-                        viewModel.showAnswer = true
-                    }
+                    Button("Wrong - Try again") {
+                        viewModel.showAnswer = false
+                    }.foregroundColor(.red)
                 }
-            }.padding()
-        }
+            } else {
+                Button("Check the answer") {
+                    viewModel.showAnswer = true
+                }
+            }
+        }.padding()
     }
     
     @ViewBuilder func revealCheckButton(index: Int) -> some View {

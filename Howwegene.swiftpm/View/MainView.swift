@@ -11,30 +11,32 @@ class MainViewModel: ObservableObject {
     @Published var currentStep: Step? = .tutorial
     
     enum Step: String, CaseIterable, Identifiable, Hashable {
-        case geneQuiz
+        
         case tutorial
         case completeDominance
+        case completeDominanceQuiz
         
         var id: String { return self.rawValue }
         var title: String {
             switch self {
-            case .geneQuiz:
-                return "Gene Quiz"
+            
             case .tutorial:
-                return "Tutorial"
+                return "1. Tutorial"
             case .completeDominance:
-                return "2-1. Complete Dominance"
+                return "1-1. Complete Dominance"
+            case .completeDominanceQuiz:
+                return "1-2. Complete Dominance Quiz"
             }
         }
     }
     
     func moveToNextStep() {
         switch currentStep {
-        case .geneQuiz:
-            currentStep = .tutorial
         case .tutorial:
             currentStep = .completeDominance
         case .completeDominance:
+            currentStep = .completeDominanceQuiz
+        case .completeDominanceQuiz:
             break
         case nil:
             break
@@ -75,6 +77,7 @@ struct MainView: View {
         if let step = viewModel.currentStep {
             stepView(step)
                 .navigationTitle(step.title)
+                .multilineTextAlignment(.center)
         } else {
             EmptyView()
         }
@@ -83,12 +86,12 @@ struct MainView: View {
     @ViewBuilder
     private func stepView(_ step: MainViewModel.Step) -> some View {
         switch step {
-        case .geneQuiz:
-            GeneQuizStep()
         case .tutorial:
             TutorialStep(turnToNextStep: viewModel.moveToNextStep)
         case .completeDominance:
-            CompleteDominanceStep()
+            CompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
+        case .completeDominanceQuiz:
+            CompleteDominanceQuiz()
         }
     }
 }

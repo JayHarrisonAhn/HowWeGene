@@ -58,7 +58,7 @@ struct CompleteDominanceContent1: View {
                     .frame(width: 100)
                     .buttonStyle(.bordered)
                 }.border(blocked ? .red : .clear)
-                Text("There are 2 shapes of the headline on the forehead - Straight and V-Shaped.\n\nSelect yours on the above images.")
+                Text("There are 2 shapes of the headline on the forehead -\nStraight and V-Shaped.\n\nLook in the mirror and select yours on the above images.")
             }
         }
     }

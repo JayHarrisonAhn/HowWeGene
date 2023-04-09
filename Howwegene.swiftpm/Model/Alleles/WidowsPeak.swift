@@ -9,8 +9,8 @@ import SwiftUI
 
 enum WidowsPeak: Allele {
     enum Expression: CaseIterable, Equatable, Hashable, TitleRepresentable {
-        case straight
         case vShaped
+        case straight
         var title: String {
             switch self {
             case .straight:

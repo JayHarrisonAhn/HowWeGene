@@ -13,7 +13,7 @@ struct CompleteDominanceContent2: View {
             VStack(spacing: 70) {
                 Text("Whether you have straight or v-shaped is determined by 'Widow's Peak' allele.")
                 
-                Text("There are two types of alleles.")
+                Text("There are two types of alleles. -\nLarge W for v-shaped, and small w for straight.")
                 
                 HStack {
                     VStack(spacing: 0) {

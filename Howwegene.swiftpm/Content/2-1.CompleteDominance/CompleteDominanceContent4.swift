@@ -11,11 +11,14 @@ struct CompleteDominanceContent4: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                GenotypeView<WidowsPeak, GenotypePersonView>(
+                GenotypeView(
                     personView: {
-                        GenotypePersonView(person: .human)
+                        Image(systemName: "questionmark")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 25)
                     },
-                    genotype: Genotype(
+                    genotype: Genotype<WidowsPeak>(
                         firstAllele: .vShaped,
                         secondAllele: .straight
                     ),

@@ -25,7 +25,7 @@ struct CompleteDominanceContent5: View {
                         showComment: true
                     )
                 }
-                Text("In 'Complete Dominance' rule, V-shaped allele wins straight allele.")
+                Text("In 'Complete Dominance' rule,\nV-shaped allele wins straight allele.")
             }
         }
     }
