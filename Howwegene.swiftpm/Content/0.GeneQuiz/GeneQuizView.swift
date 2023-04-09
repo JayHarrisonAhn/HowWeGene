@@ -8,7 +8,7 @@
 import SwiftUI
 
 class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
-    let checkingAlleles: [AlleleType] = AlleleType.allCases.map {$0}
+    let checkingAlleles: [AlleleType.Expression] = AlleleType.Expression.allCases.map {$0}
     @Published var parents: ParentsPedigree<AlleleType>
     @Published var selections: [Bool]
     
@@ -66,15 +66,7 @@ struct GeneQuizView<AlleleType: Allele>: View {
                 
                 HStack {
                     ForEach(0 ..< viewModel.checkingAlleles.count, id: \.self) { index in
-                        if viewModel.selections[index] {
-                            Button(viewModel.checkingAlleles[index].title) {
-                                viewModel.selections[index].toggle()
-                            }.buttonStyle(.borderedProminent)
-                        } else {
-                            Button(viewModel.checkingAlleles[index].title) {
-                                viewModel.selections[index].toggle()
-                            }.buttonStyle(.bordered)
-                        }
+                        revealCheckButton(index: index)
                     }
                 }
                 if viewModel.showAnswer {
@@ -93,6 +85,18 @@ struct GeneQuizView<AlleleType: Allele>: View {
                     }
                 }
             }.padding()
+        }
+    }
+    
+    @ViewBuilder func revealCheckButton(index: Int) -> some View {
+        if viewModel.selections[index] {
+            Button(viewModel.checkingAlleles[index].title) {
+                viewModel.selections[index].toggle()
+            }.buttonStyle(.borderedProminent)
+        } else {
+            Button(viewModel.checkingAlleles[index].title) {
+                viewModel.selections[index].toggle()
+            }.buttonStyle(.bordered)
         }
     }
 }

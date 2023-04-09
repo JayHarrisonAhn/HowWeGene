@@ -8,7 +8,20 @@
 import SwiftUI
 
 enum WidowsPeak: Allele {
-    static func revealing(genotype: Genotype<WidowsPeak>) -> WidowsPeak {
+    enum Expression: CaseIterable, Equatable, Hashable, TitleRepresentable {
+        case straight
+        case vShaped
+        var title: String {
+            switch self {
+            case .straight:
+                return "Straight"
+            case .vShaped:
+                return "V-Shaped"
+            }
+        }
+    }
+    
+    static func revealing(genotype: Genotype<WidowsPeak>) -> Expression {
         if [genotype.firstAllele, genotype.secondAllele].contains(.vShaped) {
             return .vShaped
         } else {
@@ -16,8 +29,8 @@ enum WidowsPeak: Allele {
         }
     }
     
-    case straight
     case vShaped
+    case straight
     
     var title: String {
         switch self {
