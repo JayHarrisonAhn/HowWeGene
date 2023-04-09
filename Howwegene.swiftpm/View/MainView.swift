@@ -21,7 +21,7 @@ class MainViewModel: ObservableObject {
             switch self {
             
             case .tutorial:
-                return "1. Tutorial"
+                return "Tutorial"
             case .completeDominance:
                 return "1-1. Complete Dominance"
             case .completeDominanceQuiz:
