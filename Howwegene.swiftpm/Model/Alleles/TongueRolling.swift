@@ -16,7 +16,7 @@ enum TongueRolling: Allele {
         }
     }
     
-    static func revealing(genotype: Genotype<TongueRolling>) -> Expression {
+    static func revealing(genotype: Genotype<Self>) -> Expression {
         return .canRoll
     }
     

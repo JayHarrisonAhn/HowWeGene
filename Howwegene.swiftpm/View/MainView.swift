@@ -15,17 +15,22 @@ class MainViewModel: ObservableObject {
         case tutorial
         case completeDominance
         case completeDominanceQuiz
+        case incompleteDominance
+        case incompleteDominanceQuiz
         
         var id: String { return self.rawValue }
         var title: String {
             switch self {
-            
             case .tutorial:
                 return "Tutorial"
             case .completeDominance:
                 return "1-1. Complete Dominance"
             case .completeDominanceQuiz:
                 return "1-2. Complete Dominance Quiz"
+            case .incompleteDominance:
+                return "2-1. Incomplete Dominance"
+            case .incompleteDominanceQuiz:
+                return "2-2. Incomplete Dominance Quiz"
             }
         }
     }
@@ -37,6 +42,10 @@ class MainViewModel: ObservableObject {
         case .completeDominance:
             currentStep = .completeDominanceQuiz
         case .completeDominanceQuiz:
+            break
+        case .incompleteDominance:
+            currentStep = .incompleteDominanceQuiz
+        case .incompleteDominanceQuiz:
             break
         case nil:
             break
@@ -92,6 +101,10 @@ struct MainView: View {
             CompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
         case .completeDominanceQuiz:
             CompleteDominanceQuiz()
+        case .incompleteDominance:
+            IncompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
+        case .incompleteDominanceQuiz:
+            IncompleteDominanceQuiz()
         }
     }
 }

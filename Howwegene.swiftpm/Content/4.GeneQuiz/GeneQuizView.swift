@@ -16,7 +16,7 @@ class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
     
     init(parents: ParentsPedigree<AlleleType>) {
         self.parents = parents
-        self.selections = AlleleType.allCases.map { _ in return false }
+        self.selections = AlleleType.Expression.allCases.map { _ in return false }
     }
     
     func checkAnswer() -> Bool {

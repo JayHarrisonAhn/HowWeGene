@@ -21,7 +21,7 @@ enum WidowsPeak: Allele {
         }
     }
     
-    static func revealing(genotype: Genotype<WidowsPeak>) -> Expression {
+    static func revealing(genotype: Genotype<Self>) -> Expression {
         if [genotype.firstAllele, genotype.secondAllele].contains(.vShaped) {
             return .vShaped
         } else {

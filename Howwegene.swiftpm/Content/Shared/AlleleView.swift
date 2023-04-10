@@ -41,6 +41,13 @@ struct AlleleView<AlleleType: Allele>: View {
             case .straight:
                 Text("w")
             }
+        } else if let allele = allele as? SnapdragonColor {
+            switch allele {
+            case .red:
+                Text("R")
+            case .white:
+                Text("W")
+            }
         } else {
             Image(systemName: "questionmark")
         }
@@ -55,7 +62,7 @@ struct AlleleView<AlleleType: Allele>: View {
                 return "straight"
             }
         } else {
-            return ""
+            return allele.title
         }
     }
 }
