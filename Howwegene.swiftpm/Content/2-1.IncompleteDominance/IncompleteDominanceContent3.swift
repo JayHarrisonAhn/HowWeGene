@@ -22,7 +22,7 @@ struct IncompleteDominanceContent3: View {
                         showComment: true
                     )
                 }
-                Text("Of course, a flower that has only single kind of allele has the exact color it has.")
+                Text("Of course, a flower that has only a single kind of allele has the exact color it has.")
                 HStack {
                     GenotypeView(
                         personView: {

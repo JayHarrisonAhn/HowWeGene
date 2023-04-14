@@ -12,7 +12,7 @@ struct IncompleteDominanceContent4: View {
         ContentScrollableView {
             VStack(spacing: 30) {
                 Text("And here's the key.")
-                Text("A flower that has two different alleles have pink color.")
+                Text("A flower that has two different alleles has pink color.")
                 GenotypeView(
                     personView: {
                         Image("snapdragon_single_pink")

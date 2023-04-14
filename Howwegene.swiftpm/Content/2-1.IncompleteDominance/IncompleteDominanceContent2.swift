@@ -26,7 +26,7 @@ struct IncompleteDominanceContent2: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 200)
-                Text("Interesting thing is that, the children between pink parents can have all colors.")
+                Text("Interesting thing is that, between two pink parents, the children can have all the colors.")
                 Text("What is happening?")
             }
         }

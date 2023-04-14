@@ -17,6 +17,8 @@ class MainViewModel: ObservableObject {
         case completeDominanceQuiz
         case incompleteDominance
         case incompleteDominanceQuiz
+        case multipleAlleles
+        case multipleAllelesQuiz
         
         var id: String { return self.rawValue }
         var title: String {
@@ -31,6 +33,10 @@ class MainViewModel: ObservableObject {
                 return "2-1. Incomplete Dominance"
             case .incompleteDominanceQuiz:
                 return "2-2. Incomplete Dominance Quiz"
+            case .multipleAlleles:
+                return "3-1. Multiple Alleles"
+            case .multipleAllelesQuiz:
+                return "3-2. Multiple Alleles Quiz"
             }
         }
     }
@@ -46,6 +52,10 @@ class MainViewModel: ObservableObject {
         case .incompleteDominance:
             currentStep = .incompleteDominanceQuiz
         case .incompleteDominanceQuiz:
+            break
+        case .multipleAlleles:
+            currentStep = .multipleAllelesQuiz
+        case .multipleAllelesQuiz:
             break
         case nil:
             break
@@ -105,6 +115,10 @@ struct MainView: View {
             IncompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
         case .incompleteDominanceQuiz:
             IncompleteDominanceQuiz()
+        case .multipleAlleles:
+            MultipleAllelesStep(turnToNextStep: viewModel.moveToNextStep)
+        case .multipleAllelesQuiz:
+            MultipleAllelesQuiz()
         }
     }
 }

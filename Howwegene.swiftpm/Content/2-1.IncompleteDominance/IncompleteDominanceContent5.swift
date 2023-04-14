@@ -26,7 +26,8 @@ struct IncompleteDominanceContent5: View {
                         showComment: true
                     )
                 }
-                Text("Unlike complete dominance rule, no allele gets dominated over the other.")
+                Text("Unlike complete dominance rule, no allele gets dominated over the other. Thus, each alleles are expressed at the same time.")
+                Text("Therefore, the flower that has two different alleles becomes pink - a color which is at the middle point between red and white.")
                 Text("Let's now move on to the quiz section.")
             }
         }

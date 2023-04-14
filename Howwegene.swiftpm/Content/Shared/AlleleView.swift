@@ -48,6 +48,15 @@ struct AlleleView<AlleleType: Allele>: View {
             case .white:
                 Text("W")
             }
+        } else if let allele = allele as? BloodType {
+            switch allele {
+            case .a:
+                Text("A")
+            case .b:
+                Text("B")
+            case .o:
+                Text("O")
+            }
         } else {
             Image(systemName: "questionmark")
         }

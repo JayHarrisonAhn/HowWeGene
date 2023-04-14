@@ -11,6 +11,11 @@ struct IncompleteDominanceContent1: View {
     var body: some View {
         ContentScrollableView {
             VStack {
+                Image("snapdragon_picture")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(30)
+                    .padding()
                 Text("Have you ever seen 'Snapdragon Flower'?")
                 Text("There are three colors of them. Red, pink and white.")
             }
