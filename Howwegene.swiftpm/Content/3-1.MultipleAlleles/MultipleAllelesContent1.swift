@@ -20,15 +20,14 @@ struct MultipleAllelesContent1: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
-                HStack {
+                HStack(alignment: .center, spacing: 0) {
                     ForEach(0 ..< viewModel.allExpressions.count, id: \.self) { index in
                         bloodTypeSelector(bloodType: viewModel.allExpressions[index])
                     }
-                    .frame(width: 100)
                     .buttonStyle(.bordered)
                     .padding()
                 }.border(blocked ? .red : .clear)
-                Text("Do you know your blood type?")
+                Text("Do you know what blood type you have?")
                 Text("Select yours on the above buttons.\n(If you don't know, don't worry. Just select anything)")
             }
         }
@@ -39,18 +38,18 @@ struct MultipleAllelesContent1: View {
             Button {
                 onSelectCard(bloodType)
             } label: {
-                bloodTypeCard(bloodType: bloodType)
-                    .font(.bold(.system(size: 30))())
+                AlleleExpressionView<BloodType>(expression: bloodType)
+                    .scaledToFit()
+                    .frame(maxWidth: 40)
             }
-            .frame(width: 100)
             .buttonStyle(.bordered)
             
             if viewModel.bloodType == bloodType {
                 Image(systemName: "checkmark.circle")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:70)
-                    .foregroundColor(.gray)
+                    .frame(maxWidth: 40)
+                    .foregroundColor(.accentColor)
             }
         }
     }

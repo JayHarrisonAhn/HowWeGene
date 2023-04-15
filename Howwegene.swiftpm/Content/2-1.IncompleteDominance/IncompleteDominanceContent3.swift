@@ -11,7 +11,7 @@ struct IncompleteDominanceContent3: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("The answer is that, there are only two alleles.\nRed and white.")
+                Text("The answer is : there are only two alleles.\nRed and white.")
                 HStack {
                     AlleleView<SnapdragonColor>(
                         allele: SnapdragonColor.red,

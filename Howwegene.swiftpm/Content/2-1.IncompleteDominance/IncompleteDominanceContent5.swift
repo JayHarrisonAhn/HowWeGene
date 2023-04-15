@@ -11,7 +11,7 @@ struct IncompleteDominanceContent5: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("This is why it is called 'Incomplete dominance rule'.")
+                Text("This is why it's called 'Incomplete dominance rule'.")
                 HStack(spacing: 20) {
                     AlleleView<SnapdragonColor>(
                         allele: SnapdragonColor.red,
@@ -26,8 +26,8 @@ struct IncompleteDominanceContent5: View {
                         showComment: true
                     )
                 }
-                Text("Unlike complete dominance rule, no allele gets dominated over the other. Thus, each alleles are expressed at the same time.")
-                Text("Therefore, the flower that has two different alleles becomes pink - a color which is at the middle point between red and white.")
+                Text("Unlike complete dominance rule,\nno allele gets dominated over the other.\nThus, each alleles are expressed at the same time.")
+                Text("Therefore, the flower that has two different alleles becomes pink - which is the middle color between red and white.")
                 Text("Let's now move on to the quiz section.")
             }
         }

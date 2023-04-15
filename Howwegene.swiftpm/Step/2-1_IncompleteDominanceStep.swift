@@ -18,7 +18,7 @@ struct IncompleteDominanceStep: View {
                 IncompleteDominanceContent2().tag(1)
                 IncompleteDominanceContent3().tag(2)
                 IncompleteDominanceContent4().tag(3)
-                IncompleteDominanceContent1().tag(4)
+                IncompleteDominanceContent5().tag(4)
             } afterLastPage: {
                 turnToNextStep?()
             }

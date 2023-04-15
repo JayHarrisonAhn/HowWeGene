@@ -8,7 +8,7 @@
 import SwiftUI
 
 class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
-    let checkingAlleles: [AlleleType.Expression] = AlleleType.Expression.allCases.map {$0}
+    let checkingExpressions: [AlleleType.Expression] = AlleleType.Expression.allCases.map {$0}
     @Published var parents: ParentsPedigree<AlleleType>
     @Published var selections: [Bool]
     
@@ -24,7 +24,7 @@ class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
         let possibleCharacteristics: Set = Set(children.map { child in
             return AlleleType.revealing(genotype: child)
         })
-        let checkedCharacteristics: Set = Set(checkingAlleles.enumerated().filter { index, element in
+        let checkedCharacteristics: Set = Set(checkingExpressions.enumerated().filter { index, element in
             return selections[index]
         }.map {$0.element})
         return possibleCharacteristics == checkedCharacteristics
@@ -64,7 +64,7 @@ struct GeneQuizView<AlleleType: Allele>: View {
             Text("Choose all characteristics that their children can have.")
             
             HStack {
-                ForEach(0 ..< viewModel.checkingAlleles.count, id: \.self) { index in
+                ForEach(0 ..< viewModel.checkingExpressions.count, id: \.self) { index in
                     revealCheckButton(index: index)
                 }
             }
@@ -88,13 +88,24 @@ struct GeneQuizView<AlleleType: Allele>: View {
     
     @ViewBuilder func revealCheckButton(index: Int) -> some View {
         if viewModel.selections[index] {
-            Button(viewModel.checkingAlleles[index].title) {
-                viewModel.selections[index].toggle()
-            }.buttonStyle(.borderedProminent)
+            revealCheckCard(index: index)
+                .buttonStyle(.borderedProminent)
         } else {
-            Button(viewModel.checkingAlleles[index].title) {
-                viewModel.selections[index].toggle()
-            }.buttonStyle(.bordered)
+            revealCheckCard(index: index)
+                .buttonStyle(.bordered)
+        }
+    }
+    
+    @ViewBuilder func revealCheckCard(index: Int) -> some View {
+        Button {
+            viewModel.selections[index].toggle()
+        } label: {
+            VStack {
+                AlleleExpressionView<AlleleType>(expression: viewModel.checkingExpressions[index])
+                    .scaledToFit()
+                    .frame(maxWidth: 30)
+                Text(viewModel.checkingExpressions[index].title)
+            }
         }
     }
 }

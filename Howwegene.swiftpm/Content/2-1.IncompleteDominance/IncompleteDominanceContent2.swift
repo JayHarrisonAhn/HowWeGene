@@ -21,7 +21,7 @@ struct IncompleteDominanceContent2: View {
                         .scaledToFit()
                         .frame(maxWidth: 200)
                 }
-                Text("If parents are both red or white,\nall children have the same color as their parents.")
+                Text("If both parents are red or white,\nall children have the same color as their parents.")
                 Image("snapdragon_pink")
                     .resizable()
                     .scaledToFit()

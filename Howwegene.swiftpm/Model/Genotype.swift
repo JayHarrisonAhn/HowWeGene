@@ -16,4 +16,8 @@ struct Genotype<AlleleType: Allele>: Equatable, Hashable {
         let right: Set = [rhs.firstAllele, rhs.secondAllele]
         return left == right
     }
+    
+    var expression: AlleleType.Expression {
+        AlleleType.revealing(genotype:self)
+    }
 }

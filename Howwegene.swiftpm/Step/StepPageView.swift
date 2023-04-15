@@ -38,7 +38,7 @@ struct StepPageView<Content: View>: View {
                     turnToNextPage()
                 }
             }.buttonStyle(.borderedProminent)
-        }
+        }.padding()
     }
     
     func turnToNextPage() {

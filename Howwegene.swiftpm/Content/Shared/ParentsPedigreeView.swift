@@ -17,7 +17,7 @@ struct ParentsPedigreeView<AlleleType: Allele>: View {
             ) {
                 GenotypeView(
                     personView: {
-                        GenotypePersonView(person: .human)
+                        AlleleExpressionView<AlleleType>(expression: parents.dad.expression)
                     },
                     genotype: parents.dad,
                     showAlleleComment: true
@@ -26,7 +26,7 @@ struct ParentsPedigreeView<AlleleType: Allele>: View {
                     .frame(maxWidth: 60, maxHeight: 3)
                 GenotypeView(
                     personView: {
-                        GenotypePersonView(person: .human)
+                        AlleleExpressionView<AlleleType>(expression: parents.mom.expression)
                     },
                     genotype: parents.mom,
                     showAlleleComment: true
