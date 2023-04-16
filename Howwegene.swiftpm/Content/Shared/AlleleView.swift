@@ -18,18 +18,18 @@ struct AlleleView<AlleleType: Allele>: View {
     var body: some View {
         VStack {
             innerView
-                .font(.bold(.system(size: 50))())
+                .font(.bold(.system(size: 30))())
             if showComment {
                 Text("(\(comment))")
                     .foregroundColor(.gray)
-                    .font(.system(size: 14))
+                    .font(.system(size: 12))
             }
         }
-        .frame(maxWidth: 100, maxHeight: 100)
+        .frame(maxWidth: 70, maxHeight: 70)
         .aspectRatio(1, contentMode: .fit)
         .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(.primary, lineWidth: 5)
+            RoundedRectangle(cornerRadius: 17)
+                .stroke(.primary, lineWidth: 3)
         )
     }
     

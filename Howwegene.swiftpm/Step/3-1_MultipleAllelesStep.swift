@@ -31,9 +31,9 @@ struct MultipleAllelesStep: View {
         }
     }
     
-    @State var blockingPage: BlockingPage? = .selectWidowspeak
+    @State var blockingPage: BlockingPage? = .selectBloodtype
     enum BlockingPage {
-        case selectWidowspeak
+        case selectBloodtype
     }
     
     @ViewBuilder
@@ -51,21 +51,22 @@ struct MultipleAllelesStep: View {
                 }
             }
         ).tag(0)
-        if ![.selectWidowspeak].contains(blockingPage) {
+        if ![.selectBloodtype].contains(blockingPage) {
             MultipleAllelesContent2().tag(1)
             MultipleAllelesContent3().tag(2)
             MultipleAllelesContent4().tag(3)
-            MultipleAllelesContent2().tag(4)
-            MultipleAllelesContent2().tag(5)
+            MultipleAllelesContent5().tag(4)
+            MultipleAllelesContent6().tag(5)
+            MultipleAllelesContent7().tag(6)
         }
     }
     
     var numberOfPresentingPages: Int {
         switch blockingPage {
-        case .selectWidowspeak:
+        case .selectBloodtype:
             return 1
         case nil:
-            return 6
+            return 7
         }
     }
 }

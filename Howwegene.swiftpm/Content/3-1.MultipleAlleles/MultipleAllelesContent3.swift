@@ -9,7 +9,12 @@ import SwiftUI
 
 struct MultipleAllelesContent3: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ContentScrollableView {
+            VStack(spacing: 30) {
+                Text("In fact, inheritance of a blood type is a bit complex.")
+                Text("So pay attention and let's see how it works.")
+            }
+        }
     }
 }
 

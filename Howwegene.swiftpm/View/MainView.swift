@@ -9,6 +9,7 @@ import SwiftUI
 
 class MainViewModel: ObservableObject {
     @Published var currentStep: Step? = .tutorial
+    @Published var presentMoreinfoView: Bool = false
     
     enum Step: String, CaseIterable, Identifiable, Hashable {
         
@@ -76,9 +77,20 @@ struct MainView: View {
             ) { step in
                 listCell(list: step)
             }
+            Button("More info") {
+                viewModel.presentMoreinfoView = true
+            }
+            .buttonStyle(.plain)
+            .foregroundColor(.secondary)
+            .font(.caption)
         } detail: {
             currentStepView
-        }.navigationSplitViewStyle(.balanced)
+        }
+        .navigationSplitViewStyle(.balanced)
+        .sheet(
+            isPresented: $viewModel.presentMoreinfoView,
+            content: MoreInfoView.init
+        )
     }
     
     @ViewBuilder
