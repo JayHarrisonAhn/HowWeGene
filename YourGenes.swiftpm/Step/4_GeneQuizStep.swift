@@ -11,8 +11,7 @@ class GeneQuizStepViewModel: ObservableObject {
     @Published var allele: any Allele.Type = WidowsPeak.self
     
     let alleles: [any Allele.Type] = [
-        WidowsPeak.self,
-        TongueRolling.self
+        WidowsPeak.self
     ]
     
     func changeQuiz() {
@@ -30,7 +29,7 @@ struct GeneQuizStep: View {
             VStack {
                 switch viewModel.allele {
                 case is WidowsPeak.Type:
-                    GeneQuizWidowsPeak()
+                    GeneQuizView<WidowsPeak>(parents: ParentsPedigree.random())
                 default:
                     EmptyView()
                 }
