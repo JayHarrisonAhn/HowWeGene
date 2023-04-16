@@ -8,15 +8,15 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Howwegene",
+    name: "Your Genes",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "Howwegene",
+            name: "Your Genes",
             targets: ["AppModule"],
-            bundleIdentifier: "studio.xerapix.Howwegene",
+            bundleIdentifier: "studio.xerapix.YourGenes",
             teamIdentifier: "DYNS5BXWD7",
             displayVersion: "1.0",
             bundleVersion: "1",

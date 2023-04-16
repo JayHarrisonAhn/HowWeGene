@@ -77,7 +77,7 @@ struct MainView: View {
             ) { step in
                 listCell(list: step)
             }
-            Button("More info") {
+            Button("About '\(Bundle.main.infoDictionary!["CFBundleName"] as! String)'...") {
                 viewModel.presentMoreinfoView = true
             }
             .buttonStyle(.plain)
