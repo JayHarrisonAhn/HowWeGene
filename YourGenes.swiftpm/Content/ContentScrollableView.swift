@@ -1,6 +1,6 @@
 //
 //  ContentScrollableView.swift
-//  Howwegene
+//  YourGenes
 //
 //  Created by Jay Ahn on 2023/03/24.
 //

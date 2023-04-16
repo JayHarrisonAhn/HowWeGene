@@ -1,6 +1,6 @@
 //
 //  MultipleAllelesContent2.swift
-//  Howwegene
+//  YourGenes
 //
 //  Created by Jay Ahn on 2023/04/14.
 //
