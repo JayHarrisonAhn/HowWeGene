@@ -10,6 +10,7 @@ import SwiftUI
 class MainViewModel: ObservableObject {
     @Published var currentStep: Step? = .tutorial
     @Published var presentMoreinfoView: Bool = false
+    @Published var presentCompletionView: Bool = false
     
     enum Step: String, CaseIterable, Identifiable, Hashable {
         
@@ -43,23 +44,26 @@ class MainViewModel: ObservableObject {
     }
     
     func moveToNextStep() {
-        switch currentStep {
-        case .tutorial:
-            currentStep = .completeDominance
-        case .completeDominance:
-            currentStep = .completeDominanceQuiz
-        case .completeDominanceQuiz:
-            break
-        case .incompleteDominance:
-            currentStep = .incompleteDominanceQuiz
-        case .incompleteDominanceQuiz:
-            break
-        case .multipleAlleles:
-            currentStep = .multipleAllelesQuiz
-        case .multipleAllelesQuiz:
-            break
-        case nil:
-            break
+        withAnimation(.easeInOut) { [weak self] in
+            guard let self = self else { return }
+            switch self.currentStep {
+            case .tutorial:
+                self.currentStep = .completeDominance
+            case .completeDominance:
+                self.currentStep = .completeDominanceQuiz
+            case .completeDominanceQuiz:
+                self.currentStep = .incompleteDominance
+            case .incompleteDominance:
+                self.currentStep = .incompleteDominanceQuiz
+            case .incompleteDominanceQuiz:
+                self.currentStep = .multipleAlleles
+            case .multipleAlleles:
+                self.currentStep = .multipleAllelesQuiz
+            case .multipleAllelesQuiz:
+                break
+            case nil:
+                break
+            }
         }
     }
 }
@@ -90,6 +94,10 @@ struct MainView: View {
         .sheet(
             isPresented: $viewModel.presentMoreinfoView,
             content: MoreInfoView.init
+        )
+        .sheet(
+            isPresented: $viewModel.presentCompletionView,
+            content: MainCompletionView.init
         )
     }
     
@@ -122,15 +130,17 @@ struct MainView: View {
         case .completeDominance:
             CompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
         case .completeDominanceQuiz:
-            CompleteDominanceQuiz()
+            CompleteDominanceQuiz(turnToNextStep: viewModel.moveToNextStep)
         case .incompleteDominance:
             IncompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
         case .incompleteDominanceQuiz:
-            IncompleteDominanceQuiz()
+            IncompleteDominanceQuiz(turnToNextStep: viewModel.moveToNextStep)
         case .multipleAlleles:
             MultipleAllelesStep(turnToNextStep: viewModel.moveToNextStep)
         case .multipleAllelesQuiz:
-            MultipleAllelesQuiz()
+            MultipleAllelesQuiz {
+                
+            }
         }
     }
 }

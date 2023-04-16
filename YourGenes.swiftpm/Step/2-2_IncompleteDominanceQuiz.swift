@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct IncompleteDominanceQuiz: View {
+    var turnToNextStep: (()->Void)?
+    
     var body: some View {
         StepBackgroundView {
             ContentScrollableView {
-                GeneQuizView<SnapdragonColor>(parents: ParentsPedigree.random())
+                GeneQuizView<SnapdragonColor>(parents: ParentsPedigree.random(), turnToNextStep: turnToNextStep)
             }
         }
     }

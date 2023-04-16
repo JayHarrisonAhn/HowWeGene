@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CompleteDominanceQuiz: View {
+    var turnToNextStep: (()->Void)?
+    
     var body: some View {
         StepBackgroundView {
             ContentScrollableView {
-                GeneQuizView<WidowsPeak>(parents: ParentsPedigree.random())
+                GeneQuizView<WidowsPeak>(parents: ParentsPedigree.random(), turnToNextStep: turnToNextStep)
             }
         }
     }
@@ -19,6 +21,6 @@ struct CompleteDominanceQuiz: View {
 
 struct CompleteDominanceQuiz_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteDominanceQuiz()
+        CompleteDominanceQuiz(turnToNextStep: nil)
     }
 }

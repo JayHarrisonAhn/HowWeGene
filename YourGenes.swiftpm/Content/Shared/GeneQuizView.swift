@@ -8,18 +8,24 @@
 import SwiftUI
 
 class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
+    let turnToNextStep: (()->Void)?
     let checkingExpressions: [AlleleType.Expression] = AlleleType.Expression.allCases.map {$0}
     @Published var parents: ParentsPedigree<AlleleType>
     @Published var selections: [Bool]
     
     @Published var showAnswer: Bool = false
+    @Published var showNextStepButton: Bool = false
     
-    init(parents: ParentsPedigree<AlleleType>) {
+    init(
+        parents: ParentsPedigree<AlleleType>,
+        turnToNextStep: (()->Void)?
+    ) {
         self.parents = parents
         self.selections = AlleleType.Expression.allCases.map { _ in return false }
+        self.turnToNextStep = turnToNextStep
     }
     
-    func checkAnswer() -> Bool {
+    var isCorrect: Bool {
         let children = parents.possibleChildren()
         let possibleCharacteristics: Set = Set(children.map { child in
             return AlleleType.revealing(genotype: child)
@@ -29,14 +35,56 @@ class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
         }.map {$0.element})
         return possibleCharacteristics == checkedCharacteristics
     }
+    
+    func checkAnswer() {
+        showAnswer = true
+        if isCorrect {
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + .milliseconds(1000),
+                execute: { [weak self] in
+                    withAnimation(.linear) {
+                        self?.showNextStepButton = true
+                    }
+                }
+            )
+        } else {
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + .milliseconds(1500),
+                execute: { [weak self] in
+                    self?.hideAnswer()
+                }
+            )
+        }
+    }
+    
+    func hideAnswer() {
+        showNextStepButton = false
+        showAnswer = false
+        resetExpressionSelection()
+    }
+    
+    func renewParents() {
+        withAnimation(.easeInOut) { [weak self] in
+            self?.parents = ParentsPedigree.random()
+            self?.hideAnswer()
+            self?.resetExpressionSelection()
+        }
+    }
+    
+    func resetExpressionSelection() {
+        selections = selections.map{_ in return false}
+    }
 }
 
 struct GeneQuizView<AlleleType: Allele>: View {
     @StateObject var viewModel: GeneQuizViewModel<AlleleType>
     
-    init(parents: ParentsPedigree<AlleleType>) {
+    init(
+        parents: ParentsPedigree<AlleleType>,
+        turnToNextStep: (()->Void)?
+    ) {
         self._viewModel = StateObject(
-            wrappedValue: GeneQuizViewModel<AlleleType>(parents: parents)
+            wrappedValue: GeneQuizViewModel<AlleleType>(parents: parents, turnToNextStep: turnToNextStep)
         )
     }
     
@@ -65,53 +113,104 @@ struct GeneQuizView<AlleleType: Allele>: View {
             
             HStack {
                 ForEach(0 ..< viewModel.checkingExpressions.count, id: \.self) { index in
-                    revealCheckButton(index: index)
+                    expressionButton(index: index)
                 }
             }
-            if viewModel.showAnswer {
-                if viewModel.checkAnswer() {
-                    Button("Correct!") {
-                        viewModel.showAnswer = false
-                    }.foregroundColor(.green)
-                } else {
-                    Button("Wrong - Try again") {
-                        viewModel.showAnswer = false
-                    }.foregroundColor(.red)
-                }
-            } else {
-                Button("Check the answer") {
-                    viewModel.showAnswer = true
-                }
-            }
+            answerButton
         }.padding()
     }
     
-    @ViewBuilder func revealCheckButton(index: Int) -> some View {
+    @ViewBuilder
+    func expressionButton(index: Int) -> some View {
         if viewModel.selections[index] {
-            revealCheckCard(index: index)
+            expressionView(index: index)
                 .buttonStyle(.borderedProminent)
+                .foregroundColor(Color(UIColor.systemBackground))
         } else {
-            revealCheckCard(index: index)
+            expressionView(index: index)
                 .buttonStyle(.bordered)
+                .foregroundColor(.primary)
         }
     }
     
-    @ViewBuilder func revealCheckCard(index: Int) -> some View {
-        Button {
-            viewModel.selections[index].toggle()
-        } label: {
-            VStack {
-                AlleleExpressionView<AlleleType>(expression: viewModel.checkingExpressions[index])
-                    .scaledToFit()
-                    .frame(maxWidth: 30)
-                Text(viewModel.checkingExpressions[index].title)
+    @ViewBuilder
+    func expressionView(index: Int) -> some View {
+        VStack {
+            Button {
+                viewModel.selections[index].toggle()
+            } label: {
+                VStack {
+                    AlleleExpressionView<AlleleType>(expression: viewModel.checkingExpressions[index])
+                        .scaledToFit()
+                        .frame(maxWidth: 30)
+                    Text(viewModel.checkingExpressions[index].title)
+                }
             }
+            .overlay {
+                if viewModel.showAnswer {
+                    Rectangle()
+                        .fill(.background.opacity(0.2))
+                } else {
+                    EmptyView()
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder var answerButton: some View {
+        if viewModel.showAnswer {
+            if viewModel.isCorrect {
+                VStack {
+                    Button("Correct!") {
+                        viewModel.showAnswer = false
+                    }
+                    .buttonStyle(.bordered)
+                    .foregroundColor(.green)
+                    if viewModel.showNextStepButton {
+                        HStack {
+                            Button {
+                                viewModel.renewParents()
+                            } label: {
+                                HStack {
+                                    Text("Try again")
+                                    Image(systemName: "arrow.uturn.left.circle")
+                                }
+                            }.buttonStyle(.bordered)
+                            Button {
+                                viewModel.turnToNextStep?()
+                            } label: {
+                                HStack {
+                                    Text("Next step")
+                                    Image(systemName: "arrow.forward.circle")
+                                }
+                            }.buttonStyle(.bordered)
+                        }
+                    }
+                }
+            } else {
+                Button("Wrong - Try again") {
+                    viewModel.showAnswer = false
+                }
+                .buttonStyle(.bordered)
+                .foregroundColor(.red)
+            }
+            
+        } else {
+            Button("Check the answer") {
+                if viewModel.showAnswer {
+                    viewModel.hideAnswer()
+                } else {
+                    viewModel.checkAnswer()
+                }
+            }
+            .buttonStyle(.bordered)
+            .foregroundColor(.accentColor.opacity(0.8))
         }
     }
 }
 
 struct GeneQuizView_Previews: PreviewProvider {
     static var previews: some View {
-        GeneQuizView<WidowsPeak>(parents: .random())
+        GeneQuizView<WidowsPeak>(parents: .random(), turnToNextStep: nil)
     }
 }

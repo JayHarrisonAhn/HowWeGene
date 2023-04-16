@@ -32,11 +32,8 @@ struct StepPageView<Content: View>: View {
                 pages()
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
-            
             Button("Next") {
-                withAnimation {
-                    turnToNextPage()
-                }
+                turnToNextPage()
             }.buttonStyle(.borderedProminent)
         }.padding()
     }

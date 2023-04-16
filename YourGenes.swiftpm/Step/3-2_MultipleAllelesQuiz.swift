@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct MultipleAllelesQuiz: View {
+    var turnToNextStep: (()->Void)?
+    
     var body: some View {
         StepBackgroundView {
             ContentScrollableView {
-                GeneQuizView<BloodType>(parents: ParentsPedigree.random())
+                GeneQuizView<BloodType>(parents: ParentsPedigree.random(), turnToNextStep: turnToNextStep)
             }
         }
     }
