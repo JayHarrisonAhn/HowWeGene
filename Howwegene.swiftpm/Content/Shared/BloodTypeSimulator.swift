@@ -76,17 +76,21 @@ struct BloodTypeSimulator: View {
             genotype.secondAllele
         ]
         HStack {
-            if genotype.contains(.a) {
-                Image("antigen_icon_a")
-                    .resizable()
+            if genotype == [.o] {
+                Antigen.emptyIcon
                     .scaledToFit()
                     .frame(maxWidth: 50)
-            }
-            if genotype.contains(.b) {
-                Image("antigen_icon_b")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 50)
+            } else {
+                if genotype.contains(.a) {
+                    Antigen.a.icon
+                        .scaledToFit()
+                        .frame(maxWidth: 50)
+                }
+                if genotype.contains(.b) {
+                    Antigen.b.icon
+                        .scaledToFit()
+                        .frame(maxWidth: 50)
+                }
             }
         }
     }
@@ -96,7 +100,7 @@ struct BloodTypeSimulator_Previews: PreviewProvider {
     static var previews: some View {
         BloodTypeSimulator(
             genotype: Genotype<BloodType>(
-                firstAllele: .a,
+                firstAllele: .o,
                 secondAllele: .o
             )
         )

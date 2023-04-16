@@ -11,12 +11,11 @@ struct MultipleAllelesContent5: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("And the existence of A and B antigen determines the blood type.")
+                Text("The existence of A and B antigen determines the blood type.")
                 bloodtypeExplanation(
                     text: "If you have A antigen only,\nyour blood type becomes A."
                 ){
-                    Image("antigen_icon_a")
-                        .resizable()
+                    Antigen.a.icon
                 } bloodtype: {
                     Image("bloodtype_icon_a")
                         .resizable()
@@ -24,8 +23,7 @@ struct MultipleAllelesContent5: View {
                 bloodtypeExplanation(
                     text: "If you have B antigen only,\nyour blood type becomes B."
                 ){
-                    Image("antigen_icon_b")
-                        .resizable()
+                    Antigen.b.icon
                 } bloodtype: {
                     Image("bloodtype_icon_b")
                         .resizable()
@@ -34,10 +32,8 @@ struct MultipleAllelesContent5: View {
                     text: "If you have both A and B antigen,\nyour blood type becomes AB."
                 ){
                     HStack {
-                        Image("antigen_icon_a")
-                            .resizable()
-                        Image("antigen_icon_b")
-                            .resizable()
+                        Antigen.a.icon
+                        Antigen.b.icon
                     }
                 } bloodtype: {
                     Image("bloodtype_icon_ab")
@@ -46,10 +42,8 @@ struct MultipleAllelesContent5: View {
                 bloodtypeExplanation(
                     text: "If you don't have any antigen,\nyour blood type becomes O."
                 ){
-                    Image(systemName: "xmark.circle")
-                        .resizable()
+                    Antigen.emptyIcon
                         .scaledToFit()
-                        .frame(maxWidth: 20)
                 } bloodtype: {
                     Image("bloodtype_icon_ab")
                         .resizable()

@@ -11,48 +11,25 @@ struct MultipleAllelesContent7: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("A allele produces A antigen;\nB produces B antigen;\nand O produces nothing.")
+                Text("An allele is responsible for producing antigen.")
+                Text("An allele produces A antigen;\nB produces B antigen;\nand unlike the others, O produces nothing.")
                 VStack(spacing: 10) {
                     bloodtypeAntigenCard(
                         bloodTypeAllele: .a
                     ) {
-                        Image("antigen_icon_a")
-                            .resizable()
+                        Antigen.a.icon
                     }
                     bloodtypeAntigenCard(
                         bloodTypeAllele: .b
                     ) {
-                        Image("antigen_icon_b")
-                            .resizable()
+                        Antigen.b.icon
                     }
                     bloodtypeAntigenCard(
                         bloodTypeAllele: .o
                     ) {
-                        Image(systemName: "xmark.circle")
-                            .resizable()
+                        Antigen.emptyIcon
                     }
                 }
-                Text("Therefore, A and B alleles are codominant\nand O allele is recessive.")
-                HStack(spacing: 10) {
-                    AlleleView<BloodType>(
-                        allele: BloodType.a
-                    )
-                    Image(systemName: "equal")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
-                    AlleleView<BloodType>(
-                        allele: BloodType.b
-                    )
-                    Image(systemName: "greaterthan")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
-                    AlleleView<BloodType>(
-                        allele: BloodType.o
-                    )
-                }
-                Text("Imagine - a person has A and O alleles.\nAllele A will produce A antigen and O will do nothing.\n-Then, his/her body will anyway produce A antigen.")
             }
         }
     }

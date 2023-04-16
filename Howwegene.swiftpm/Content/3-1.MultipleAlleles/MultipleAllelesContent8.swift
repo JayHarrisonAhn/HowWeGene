@@ -10,22 +10,32 @@ import SwiftUI
 struct MultipleAllelesContent8: View {
     var body: some View {
         ContentScrollableView {
-            VStack(spacing: 30) {
-                Text("Haha, I know. It's really difficult to understand.\nLet's check what you've understood.")
-                Text("Change the type of allele below\nand check how antigen and blood type changes.")
-                
-                BloodTypeSimulator(
-                    genotype: Genotype<BloodType>(
-                        firstAllele: .a,
-                        secondAllele: .o
+            VStack(spacing: 50) {
+                VStack(spacing: 10) {
+                    Text("Then now imagine - a person has A and O alleles.")
+                    Text("- Allele A will produce antigen A.\n- Allele O will do nothing.")
+                    Text("Therefore, his/her body will produce A antigen, anyway.")
+                }
+                HStack(spacing: 10) {
+                    AlleleView<BloodType>(
+                        allele: BloodType.a
                     )
-                )
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(.primary.opacity(0.4), lineWidth: 1)
-                )
-                Text("And of course, every person has two alleles.")
+                    Image(systemName: "equal")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30)
+                    AlleleView<BloodType>(
+                        allele: BloodType.b
+                    )
+                    Image(systemName: "greaterthan")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30)
+                    AlleleView<BloodType>(
+                        allele: BloodType.o
+                    )
+                }
+                Text("By this, we can see that A and B alleles are codominant\nand O allele is recessive.")
             }
         }
     }

@@ -58,6 +58,8 @@ struct MultipleAllelesStep: View {
             MultipleAllelesContent5().tag(4)
             MultipleAllelesContent6().tag(5)
             MultipleAllelesContent7().tag(6)
+            MultipleAllelesContent8().tag(7)
+            MultipleAllelesContent9().tag(8)
         }
     }
     
@@ -66,7 +68,7 @@ struct MultipleAllelesStep: View {
         case .selectBloodtype:
             return 1
         case nil:
-            return 7
+            return 9
         }
     }
 }

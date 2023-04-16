@@ -14,22 +14,20 @@ struct MultipleAllelesContent4: View {
                 Text("First, let's briefly see what bloodtype actually is.")
                 VStack(spacing: 5) {
                     Text("In human blood, there is something called 'antigen'.")
-                    Text("There's no need to know what antigen is in this course.\nIt's just a kind of substance that human body makes.")
+                    Text("There's no need to know what antigen is - in this course.\nIt's just a kind of substance that human body makes.")
                         .font(.caption)
                         .opacity(0.5)
                 }
                 HStack {
-                    Image("antigen_icon_a")
-                        .resizable()
+                    Antigen.a.icon
                         .scaledToFit()
                         .frame(maxWidth: 70)
                     Spacer()
-                    Image("antigen_icon_b")
-                        .resizable()
+                    Antigen.b.icon
                         .scaledToFit()
                         .frame(maxWidth: 70)
                 }.frame(maxWidth: 170)
-                Text("For ABO blood type, there are two kinds of them\n- A and B antigen.")
+                Text("For ABO blood type, there are two kinds of antigen\n- A antigen and B antigen.")
             }
         }
     }
