@@ -53,8 +53,8 @@ struct MultipleAllelesStep: View {
         ).tag(0)
         if ![.selectWidowspeak].contains(blockingPage) {
             MultipleAllelesContent2().tag(1)
-            MultipleAllelesContent2().tag(2)
-            MultipleAllelesContent2().tag(3)
+            MultipleAllelesContent3().tag(2)
+            MultipleAllelesContent4().tag(3)
             MultipleAllelesContent2().tag(4)
             MultipleAllelesContent2().tag(5)
         }

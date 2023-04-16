@@ -34,13 +34,13 @@ struct AlleleExpressionView<AlleleType: Allele>: View {
         } else if let expression = expression as? BloodType.Expression {
             switch expression {
             case .a:
-                Image("bloodtype_a").resizable()
+                Image("bloodtype_icon_a").resizable()
             case .b:
-                Image("bloodtype_b").resizable()
+                Image("bloodtype_icon_b").resizable()
             case .o:
-                Image("bloodtype_o").resizable()
+                Image("bloodtype_icon_o").resizable()
             case .ab:
-                Image("bloodtype_ab").resizable()
+                Image("bloodtype_icon_ab").resizable()
             }
         } else {
             Image(systemName: "questionmark")

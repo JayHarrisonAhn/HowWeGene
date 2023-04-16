@@ -17,6 +17,7 @@ struct ContentScrollableView<Content: View>: View {
                 VStack(alignment: .center) {
                     Spacer()
                     content()
+                        .fixedSize(horizontal: false, vertical: true)
                         .padding()
                         .frame(maxWidth: 500)
                     Spacer()

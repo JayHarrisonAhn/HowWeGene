@@ -29,7 +29,7 @@ struct StepBackgroundView<Content: View>: View {
                                 width: backgroundImageWidth(frameWidth: proxy.size.width),
                                 alignment: .center
                             )
-                            .opacity(0.3)
+                            .opacity(0.1)
                     }
                 }.ignoresSafeArea()
                 content()

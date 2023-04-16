@@ -10,14 +10,25 @@ import SwiftUI
 struct IncompleteDominanceContent1: View {
     var body: some View {
         ContentScrollableView {
-            VStack {
+            VStack(spacing: 30) {
                 Image("snapdragon_picture")
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(30)
-                    .padding()
-                Text("Have you ever seen 'Snapdragon Flower'?")
-                Text("There are three colors of them. Red, pink and white.")
+                Text("Have you ever seen 'Snapdragon Flowers'?")
+                HStack {
+                    Image("snapdragon_single_red")
+                        .resizable()
+                        .scaledToFit()
+                    Image("snapdragon_single_pink")
+                        .resizable()
+                        .scaledToFit()
+                    Image("snapdragon_single_white")
+                        .resizable()
+                        .scaledToFit()
+                }
+                .frame(maxHeight: 60)
+                Text("They have three kinds of color. Red, pink and white.")
             }
         }
     }

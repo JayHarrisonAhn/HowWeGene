@@ -9,7 +9,16 @@ import SwiftUI
 
 struct MultipleAllelesContent2: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ContentScrollableView {
+            VStack(spacing: 30) {
+                Text("Did you know that the bloodtype is also inherited from parents to a child?")
+                Text("For example, a child cannot have O type between parents who have both AB type.")
+                Image("bloodtype_inheritance_example")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 400)
+            }
+        }
     }
 }
 
