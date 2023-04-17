@@ -18,9 +18,9 @@ struct AlleleExpressionView<AlleleType: Allele>: View {
         if let expression = expression as? WidowsPeak.Expression {
             switch expression {
             case .vShaped:
-                Image("widowspeak_v").resizable()
+                Image("widowspeak_icon_vshaped").resizable()
             case .straight:
-                Image("widowspeak_s").resizable()
+                Image("widowspeak_icon_straight").resizable()
             }
         } else if let expression = expression as? SnapdragonColor.Expression {
             switch expression {

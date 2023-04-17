@@ -24,14 +24,15 @@ struct CompleteDominanceContent1: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
+                Text("The headline of forehead can be categorized into two shapes\n: straight and V-shaped.")
                 HStack {
                     Button {
                         onSelectWidowspeak(.straight)
                     } label: {
                         ZStack {
-                            Image("widowspeak_s")
-                                .resizable()
-                                .scaledToFit()
+                            AlleleExpressionView<WidowsPeak>(
+                                expression: .straight
+                            ).scaledToFit()
                             if viewModel.widowsPeak == .straight {
                                 Image(systemName: "checkmark.circle")
                                 .resizable()
@@ -45,9 +46,9 @@ struct CompleteDominanceContent1: View {
                         onSelectWidowspeak(.vShaped)
                     } label: {
                         ZStack {
-                            Image("widowspeak_v")
-                                .resizable()
-                                .scaledToFit()
+                            AlleleExpressionView<WidowsPeak>(
+                                expression: .vShaped
+                            ).scaledToFit()
                             if viewModel.widowsPeak == .vShaped {
                                 Image(systemName: "checkmark.circle")
                                 .resizable()
@@ -58,7 +59,7 @@ struct CompleteDominanceContent1: View {
                     .frame(width: 100)
                     .buttonStyle(.bordered)
                 }.border(blocked ? .red : .clear)
-                Text("The forehead can be divided into two headline shapes - straight and V-shaped.\n\nSimply look in the mirror and compare it to the images provided above.")
+                Text("To identify which shape your forehead resembles,\nsimply look in the mirror and choose the appropriate button above.")
             }
         }
     }

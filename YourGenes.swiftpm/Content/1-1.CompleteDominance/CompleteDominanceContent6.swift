@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct CompleteDominanceContent6: View {
+    let differentWidowsPeakGenotype = Genotype<WidowsPeak>(
+        firstAllele: .vShaped,
+        secondAllele: .straight
+    )
+    
     var body: some View {
         VStack(spacing: 30) {
             GenotypeView(
                 personView: {
-                    Image("widowspeak_v")
-                        .resizable()
-                        .scaledToFit()
+                    AlleleExpressionView<WidowsPeak>(
+                        expression: differentWidowsPeakGenotype.expression
+                    ).scaledToFit()
                 },
-                genotype: Genotype<WidowsPeak>(
-                    firstAllele: .vShaped,
-                    secondAllele: .straight
-                ),
+                genotype: differentWidowsPeakGenotype,
                 showAlleleComment: true
             )
             Text("Therefore, he/she will have v-shaped hairline.")

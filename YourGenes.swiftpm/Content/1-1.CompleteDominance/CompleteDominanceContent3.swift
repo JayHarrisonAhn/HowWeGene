@@ -14,9 +14,9 @@ struct CompleteDominanceContent3: View {
                 VStack(spacing: 30) {
                     GenotypeView(
                         personView: {
-                            Image("widowspeak_v")
-                                .resizable()
-                                .scaledToFit()
+                            AlleleExpressionView<WidowsPeak>(
+                                expression: .vShaped
+                            ).scaledToFit()
                         },
                         genotype: Genotype<WidowsPeak>(
                             firstAllele: .vShaped,
@@ -29,9 +29,9 @@ struct CompleteDominanceContent3: View {
                 VStack(spacing: 30) {
                     GenotypeView(
                         personView: {
-                            Image("widowspeak_s")
-                                .resizable()
-                                .scaledToFit()
+                            AlleleExpressionView<WidowsPeak>(
+                                expression: .straight
+                            ).scaledToFit()
                         },
                         genotype: Genotype<WidowsPeak>(
                             firstAllele: .straight,
