@@ -10,7 +10,13 @@ import SwiftUI
 struct TutorialContent2: View {
     var body: some View {
         ContentScrollableView {
-            Text("Genes are inherited from one to its child.\n\nThis is why you looks like your parents.")
+            VStack(spacing: 70) {
+                Text("They are passed down from parents to their children, which is why people often resemble their parents.")
+                Image("family_image")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 140)
+            }
         }
     }
 }

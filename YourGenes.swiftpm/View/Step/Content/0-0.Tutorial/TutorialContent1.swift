@@ -16,8 +16,8 @@ struct TutorialContent1: View {
                     .scaledToFit()
                     .frame(maxWidth: 100)
                 VStack(spacing: 20) {
-                    Text("Every person has ‘gene’s,\nwhich is a kind of blueprint of its body.")
-                    Text("It determines characteristics of the body - such as blood type, eye color, and etc.")
+                    Text("Each person has a set of 'genes,'\nwhich act like a plan for how their body will develop.")
+                    Text("Genes control things like blood type and eye color. ")
                 }
             }
         }

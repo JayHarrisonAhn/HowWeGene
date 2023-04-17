@@ -13,12 +13,11 @@ struct TutorialStep: View {
     
     var body: some View {
         StepBackgroundView {
-            StepPageView(numOfPages: 5, currentPage: $currentPage) {
+            StepPageView(numOfPages: 4, currentPage: $currentPage) {
                 TutorialContent1().tag(0)
                 TutorialContent2().tag(1)
                 TutorialContent3().tag(2)
                 TutorialContent4().tag(3)
-                TutorialContent5().tag(4)
             } afterLastPage: {
                 turnToNextStep?()
             }

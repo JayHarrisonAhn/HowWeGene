@@ -17,7 +17,7 @@ struct TutorialContent3: View {
                     .foregroundColor(.primary)
                     .scaledToFit()
                     .frame(width: 200)
-                Text("But sometimes, There are some children who don't look like their parents.\n\nFor example, a boy may have straight hair, while his parents have curly hair.")
+                Text("However, sometimes children can look different from their parents.\n\nFor instance, a boy might have straight hair while his parents have curly hair.")
             }
         }
     }

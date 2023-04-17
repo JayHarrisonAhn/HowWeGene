@@ -15,6 +15,7 @@ class MainViewModel: ObservableObject {
     enum Step: String, CaseIterable, Identifiable, Hashable {
         
         case tutorial
+        case alleleInheritance
         case completeDominance
         case completeDominanceQuiz
         case incompleteDominance
@@ -27,6 +28,8 @@ class MainViewModel: ObservableObject {
             switch self {
             case .tutorial:
                 return "Tutorial"
+            case .alleleInheritance:
+                return "Allele & Inheritance"
             case .completeDominance:
                 return "1-1. Complete Dominance"
             case .completeDominanceQuiz:
@@ -119,6 +122,8 @@ struct MainView: View {
         switch step {
         case .tutorial:
             TutorialStep(turnToNextStep: moveToNextStep)
+        case .alleleInheritance:
+            AlleleInheritanceStep(turnToNextStep: moveToNextStep)
         case .completeDominance:
             CompleteDominanceStep(turnToNextStep: moveToNextStep)
         case .completeDominanceQuiz:
@@ -143,6 +148,8 @@ struct MainView: View {
             }
             switch viewModel.currentStep {
             case .tutorial:
+                viewModel.currentStep = .alleleInheritance
+            case .alleleInheritance:
                 viewModel.currentStep = .completeDominance
             case .completeDominance:
                 viewModel.currentStep = .completeDominanceQuiz

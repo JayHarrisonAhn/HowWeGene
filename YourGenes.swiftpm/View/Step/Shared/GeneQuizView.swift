@@ -99,7 +99,7 @@ struct GeneQuizView<AlleleType: Allele>: View {
     
     var body: some View {
         VStack(spacing: 30) {
-            Text("If parents have genotypes like a picture below,")
+            Text("Given the genotype of parents,")
             VStack(spacing: 0) {
                 ParentsPedigreeView<AlleleType>(
                     parents: viewModel.parents
@@ -113,14 +113,12 @@ struct GeneQuizView<AlleleType: Allele>: View {
                     .padding()
                     .frame(maxWidth: 60, maxHeight: 60)
                     .aspectRatio(1, contentMode: .fit)
-//                    .foregroundColor(.ygPrimary)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(.primary, lineWidth: 2)
                     )
             }
-            Text("Choose all characteristics that their children can have.")
-            
+            Text("Select all the traits that their children could inherit.")
             HStack {
                 ForEach(0 ..< viewModel.checkingExpressions.count, id: \.self) { index in
                     expressionButton(index: index)
