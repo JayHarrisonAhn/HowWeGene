@@ -50,7 +50,7 @@ enum SnapdragonColor: Allele {
             return "W"
         }
     }
-    var description: String {
+    var description: String? {
         switch self {
         case .red:
             return "Red"

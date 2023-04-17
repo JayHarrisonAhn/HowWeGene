@@ -13,7 +13,7 @@ struct MultipleAllelesContent2: View {
             VStack(spacing: 30) {
                 Text("Did you know that blood type is inherited from parents to their children?")
                 Text("For example, it is impossible for a child to have O blood type if both parents have AB blood type.")
-                Image("bloodtype_inheritance_example")
+                Image("bloodtype_pedigree_example")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 400)

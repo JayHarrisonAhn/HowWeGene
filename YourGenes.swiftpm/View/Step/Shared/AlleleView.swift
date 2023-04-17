@@ -20,9 +20,10 @@ struct AlleleView<AlleleType: Allele>: View {
             Text(allele.title)
                 .font(.bold(.system(size: 30))())
                 .minimumScaleFactor(0.001)
-            if showComment {
-                Text("(\(allele.description))")
-                    .foregroundColor(.gray)
+            if showComment,
+               let description = allele.description {
+                Text("(\(description))")
+                    .foregroundColor(.primary.opacity(0.5))
                     .font(.system(size: 12))
                     .minimumScaleFactor(0.1)
             }
@@ -32,7 +33,7 @@ struct AlleleView<AlleleType: Allele>: View {
         .aspectRatio(1, contentMode: .fit)
         .overlay(
             RoundedRectangle(cornerRadius: 17)
-                .stroke(.primary, lineWidth: 3)
+                .stroke(.primary, lineWidth: 2)
         )
     }
 }

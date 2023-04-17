@@ -17,6 +17,7 @@ struct CompleteDominanceContent4: View {
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: 25)
+                            .foregroundColor(.ygPrimary)
                     },
                     genotype: Genotype<WidowsPeak>(
                         firstAllele: .vShaped,

@@ -11,8 +11,10 @@ struct TutorialContent3: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
-                Image("curly")
+                Image("curly_pedigree_example")
                     .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.primary)
                     .scaledToFit()
                     .frame(width: 200)
                 Text("But sometimes, There are some children who don't look like their parents.\n\nFor example, a boy may have straight hair, while his parents have curly hair.")

@@ -17,7 +17,7 @@ struct TutorialContent1: View {
                     .frame(maxWidth: 100)
                 VStack(spacing: 20) {
                     Text("Every person has ‘gene’s,\nwhich is a kind of blueprint of its body.")
-                    Text("It determines characteristics of the body -\nsuch as blood type, eye color, and etc.")
+                    Text("It determines characteristics of the body - such as blood type, eye color, and etc.")
                 }
             }
         }

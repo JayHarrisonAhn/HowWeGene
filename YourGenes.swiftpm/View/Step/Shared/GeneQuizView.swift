@@ -105,14 +105,15 @@ struct GeneQuizView<AlleleType: Allele>: View {
                     parents: viewModel.parents
                 )
                 Rectangle()
-                    .frame(maxWidth: 3, maxHeight: 30)
-                
+                    .fill(.primary)
+                    .frame(maxWidth: 2, maxHeight: 30)
                 Image(systemName: "questionmark")
                     .resizable()
                     .scaledToFit()
                     .padding()
                     .frame(maxWidth: 60, maxHeight: 60)
                     .aspectRatio(1, contentMode: .fit)
+//                    .foregroundColor(.ygPrimary)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(.primary, lineWidth: 2)
@@ -153,6 +154,7 @@ struct GeneQuizView<AlleleType: Allele>: View {
                         .scaledToFit()
                         .frame(maxWidth: 30)
                     Text(viewModel.checkingExpressions[index].title)
+                        .font(.system(size: 12))
                 }
             }
             .overlay {

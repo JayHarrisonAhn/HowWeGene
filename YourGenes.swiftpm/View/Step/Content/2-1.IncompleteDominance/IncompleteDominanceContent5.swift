@@ -21,6 +21,7 @@ struct IncompleteDominanceContent5: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30)
+                        .foregroundColor(.ygPrimary)
                     AlleleView<SnapdragonColor>(
                         allele: SnapdragonColor.white,
                         showComment: true

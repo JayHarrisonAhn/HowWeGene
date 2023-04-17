@@ -40,7 +40,7 @@ enum WidowsPeak: Allele {
             return "w"
         }
     }
-    var description: String {
+    var description: String? {
         switch self {
         case .vShaped:
             return "V-Shaped"

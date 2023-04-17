@@ -23,7 +23,7 @@ struct ParentsPedigreeView<AlleleType: Allele>: View {
             )
             .frame(minWidth: 150)
             Rectangle()
-                .frame(minWidth: 10, maxWidth: 70, maxHeight: 3)
+                .frame(minWidth: 10, maxWidth: 70, maxHeight: 2)
             GenotypeView(
                 personView: {
                     AlleleExpressionView<AlleleType>(expression: parents.mom.expression)
@@ -36,7 +36,7 @@ struct ParentsPedigreeView<AlleleType: Allele>: View {
                 VStack(spacing: 0) {
                     Spacer()
                     Rectangle()
-                        .frame(width: 3, height: proxy.size.height / 2)
+                        .frame(width: 2, height: proxy.size.height / 2)
                 }.frame(
                     width: proxy.size.width,
                     height: proxy.size.height

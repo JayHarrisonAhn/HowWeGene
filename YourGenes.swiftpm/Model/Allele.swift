@@ -10,7 +10,7 @@ import SwiftUI
 protocol Allele: CaseIterable, Equatable, Hashable, TitleRepresentable {
     static func revealing(genotype: Genotype<Self>) -> Expression
     associatedtype Expression: CaseIterable, Equatable, Hashable, TitleRepresentable
-    var description: String { get }
+    var description: String? { get }
 }
 
 protocol TitleRepresentable {

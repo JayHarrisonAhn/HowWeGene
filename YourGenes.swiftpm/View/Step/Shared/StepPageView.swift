@@ -39,10 +39,12 @@ struct StepPageView<Content: View>: View {
     }
     
     func turnToNextPage() {
-        if currentPage + 1 < numOfPages {
-            currentPage += 1
-        } else {
-            afterLastPage?()
+        withAnimation {
+            if currentPage + 1 < numOfPages {
+                currentPage += 1
+            } else {
+                afterLastPage?()
+            }
         }
     }
 }

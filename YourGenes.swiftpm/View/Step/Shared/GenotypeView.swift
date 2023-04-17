@@ -14,11 +14,11 @@ struct GenotypeView<AlleleType: Allele, Content: View>: View {
     let showAlleleComment: Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing: 5) {
             personView()
                 .scaledToFit()
-                .frame(maxWidth: 50)
-            HStack {
+                .frame(height: 50)
+            HStack(spacing: 5) {
                 AlleleView<AlleleType>(
                     allele: genotype.firstAllele,
                     showComment: showAlleleComment
@@ -29,41 +29,21 @@ struct GenotypeView<AlleleType: Allele, Content: View>: View {
                 )
             }
         }
-        .padding()
+        .padding(5)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(.primary, lineWidth: 3)
+                .stroke(.primary, lineWidth: 2)
         )
-    }
-}
-
-struct GenotypePersonView: View {
-    let person: Person
-    enum Person {
-        case man
-        case woman
-        case human
-    }
-    
-    var body: some View {
-        switch person {
-        case .human:
-            Image(systemName: "person").resizable()
-        case .man:
-            Image("icon_dad").resizable()
-        case .woman:
-            Image("icon_mom").resizable()
-        }
     }
 }
 
 struct NewAllelePersonView_Previews: PreviewProvider {
     static var previews: some View {
-        GenotypeView<WidowsPeak, GenotypePersonView>(
+        GenotypeView(
             personView: {
-                GenotypePersonView(person: .human)
+                Text("T")
             },
-            genotype: Genotype(
+            genotype: Genotype<WidowsPeak>(
                 firstAllele: .straight,
                 secondAllele: .vShaped
             ),
