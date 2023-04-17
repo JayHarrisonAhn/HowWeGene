@@ -12,9 +12,9 @@ struct MultipleAllelesContent8: View {
         ContentScrollableView {
             VStack(spacing: 50) {
                 VStack(spacing: 10) {
-                    Text("Then now imagine - a person has A and O alleles.")
-                    Text("- Allele A will produce antigen A.\n- Allele O will do nothing.")
-                    Text("Therefore, his/her body will produce A antigen, anyway.")
+                    Text("Consider the example of a person with A and O alleles:")
+                    Text("- Allele A produces A antigen.")
+                    Text("- Allele O produces nothing.")
                 }
                 HStack(spacing: 10) {
                     AlleleView<BloodType>(
@@ -35,7 +35,7 @@ struct MultipleAllelesContent8: View {
                         allele: BloodType.o
                     )
                 }
-                Text("By this, we can see that A and B alleles are codominant\nand O allele is recessive.")
+                Text("Through this, we can see that A and B alleles are codominant,\nwhile the O allele is recessive.")
             }
         }
     }

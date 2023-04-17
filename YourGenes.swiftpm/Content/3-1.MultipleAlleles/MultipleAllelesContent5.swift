@@ -11,9 +11,9 @@ struct MultipleAllelesContent5: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("The existence of A and B antigen determines the blood type.")
+                Text("The presence of either A or B antigens, or both, determines one's blood type:")
                 bloodtypeExplanation(
-                    text: "If you have A antigen only,\nyour blood type becomes A."
+                    text: "If you have only A antigen,\nyour blood type is A."
                 ){
                     Antigen.a.icon
                 } bloodtype: {
@@ -21,7 +21,7 @@ struct MultipleAllelesContent5: View {
                         .resizable()
                 }
                 bloodtypeExplanation(
-                    text: "If you have B antigen only,\nyour blood type becomes B."
+                    text: "If you have only B antigen,\nyour blood type is B."
                 ){
                     Antigen.b.icon
                 } bloodtype: {
@@ -29,7 +29,7 @@ struct MultipleAllelesContent5: View {
                         .resizable()
                 }
                 bloodtypeExplanation(
-                    text: "If you have both A and B antigen,\nyour blood type becomes AB."
+                    text: "If you have both A and B antigens,\nyour blood type is AB."
                 ){
                     HStack {
                         Antigen.a.icon
@@ -40,7 +40,7 @@ struct MultipleAllelesContent5: View {
                         .resizable()
                 }
                 bloodtypeExplanation(
-                    text: "If you don't have any antigen,\nyour blood type becomes O."
+                    text: "If you have neither A nor B antigens,\nyour blood type is O."
                 ){
                     Antigen.emptyIcon
                         .scaledToFit()

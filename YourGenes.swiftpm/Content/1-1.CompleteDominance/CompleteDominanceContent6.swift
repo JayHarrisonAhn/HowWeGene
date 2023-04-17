@@ -23,7 +23,7 @@ struct CompleteDominanceContent6: View {
                 showAlleleComment: true
             )
             Text("Therefore, he/she will have v-shaped hairline.")
-            Text("Let's move on to quiz section.")
+            Text("Now, let's proceed to the quiz section.")
         }
     }
 }

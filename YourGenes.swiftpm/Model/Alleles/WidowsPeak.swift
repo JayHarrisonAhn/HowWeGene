@@ -34,10 +34,18 @@ enum WidowsPeak: Allele {
     
     var title: String {
         switch self {
+        case .vShaped:
+            return "W"
         case .straight:
-            return "Straight"
+            return "w"
+        }
+    }
+    var description: String {
+        switch self {
         case .vShaped:
             return "V-Shaped"
+        case .straight:
+            return "Straight"
         }
     }
 }

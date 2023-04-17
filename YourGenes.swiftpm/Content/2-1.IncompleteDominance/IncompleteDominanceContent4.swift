@@ -11,7 +11,7 @@ struct IncompleteDominanceContent4: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("And here's the key.")
+                Text("And the secret of pink color is the key to solve this phenomenon.")
                 Text("A flower that has two different alleles has pink color.")
                 GenotypeView(
                     personView: {

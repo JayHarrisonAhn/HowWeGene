@@ -11,8 +11,8 @@ struct MultipleAllelesContent9: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("Haha, I know. It's really difficult to understand.\nLet's practice what you've understood.")
-                Text("Change the type of alleles below\nand check how antigen and blood type changes.")
+                Text("It can be difficult to understand, so let's practice what we've learned.")
+                Text("Try changing the types of alleles below\nand see how the antigen and blood type change.")
                 BloodTypeSimulator(
                     genotype: Genotype<BloodType>(
                         firstAllele: .a,
@@ -24,7 +24,7 @@ struct MultipleAllelesContent9: View {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(.primary.opacity(0.4), lineWidth: 1)
                 )
-                Text("If you got it, let's move on to the quiz section.")
+                Text("If you feel like you've understood it,\nlet's move on to the quiz section.")
             }
         }
     }

@@ -58,4 +58,5 @@ enum BloodType: Allele {
             return "O"
         }
     }
+    var description: String { return title }
 }

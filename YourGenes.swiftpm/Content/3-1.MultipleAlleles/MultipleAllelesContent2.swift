@@ -11,8 +11,8 @@ struct MultipleAllelesContent2: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("Did you know that a blood type is also inherited from parents to a child?")
-                Text("For example, a child cannot have O type between parents who have both AB type.")
+                Text("Did you know that blood type is inherited from parents to their children?")
+                Text("For example, it is impossible for a child to have O blood type if both parents have AB blood type.")
                 Image("bloodtype_inheritance_example")
                     .resizable()
                     .scaledToFit()

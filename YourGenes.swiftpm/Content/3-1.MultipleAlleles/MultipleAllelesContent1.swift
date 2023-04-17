@@ -20,7 +20,7 @@ struct MultipleAllelesContent1: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 70) {
-                Text("Do you know what blood type you have?")
+                Text("Do you know your blood type?")
                 HStack(spacing: 10) {
                     ForEach(0 ..< viewModel.allExpressions.count, id: \.self) { index in
                         bloodTypeSelector(bloodType: viewModel.allExpressions[index])
@@ -29,7 +29,7 @@ struct MultipleAllelesContent1: View {
                 }
                 .padding()
                 .border(blocked ? .red : .clear)
-                Text("Select yours on the above buttons.\n(If you don't know, don't worry. Just select anything)")
+                Text("If so, please select it from the buttons provided above. If you don't know your blood type, don't worry; simply select any button.")
             }
         }
     }

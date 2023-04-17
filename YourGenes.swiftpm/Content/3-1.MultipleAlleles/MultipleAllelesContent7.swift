@@ -11,8 +11,7 @@ struct MultipleAllelesContent7: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("An allele is responsible for producing antigen.")
-                Text("An allele produces A antigen;\nB produces B antigen;\nand unlike the others, O produces nothing.")
+                Text("An allele is responsible for producing an antigen,\nwith A producing A antigen,\nB producing B antigen,\nand O producing no antigen.")
                 VStack(spacing: 10) {
                     bloodtypeAntigenCard(
                         bloodTypeAllele: .a

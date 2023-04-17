@@ -21,13 +21,13 @@ struct IncompleteDominanceContent2: View {
                         .scaledToFit()
                         .frame(maxWidth: 200)
                 }
-                Text("If both parents are red or white,\nall children have the same color as their parents.")
+                Text("If both parents have either red or white color, their children will have the same color as their parents.")
                 Image("snapdragon_pink")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 200)
-                Text("Interesting thing is that, between two pink parents, the children can have all the colors.")
-                Text("What is happening?")
+                Text("However, an interesting phenomenon occurs when two pink parents are crossed - their children can display any of the three colors.")
+                Text("Would you like to know why this happens?")
             }
         }
     }

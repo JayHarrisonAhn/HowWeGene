@@ -28,7 +28,7 @@ struct IncompleteDominanceContent1: View {
                         .scaledToFit()
                 }
                 .frame(maxHeight: 60)
-                Text("They have three kinds of color. Red, pink and white.")
+                Text("There are three colors of Snapdragon flower\n- Red, pink and white.")
             }
         }
     }

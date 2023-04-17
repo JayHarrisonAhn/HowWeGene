@@ -24,7 +24,7 @@ struct CompleteDominanceContent4: View {
                     ),
                     showAlleleComment: true
                 )
-                Text("Then, what if he/she has two different alleles?")
+                Text("Then, what happens if an individual has two different alleles?")
             }
         }
     }

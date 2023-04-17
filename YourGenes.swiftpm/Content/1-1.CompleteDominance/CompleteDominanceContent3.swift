@@ -24,7 +24,7 @@ struct CompleteDominanceContent3: View {
                         ),
                         showAlleleComment: true
                     )
-                    Text("If a person has two v-shaped alleles,\nhe/she will have v-shaped hairline.")
+                    Text("If a person has two v-shaped alleles,\nhe/she will have a v-shaped hairline.")
                 }
                 VStack(spacing: 30) {
                     GenotypeView(
@@ -39,7 +39,7 @@ struct CompleteDominanceContent3: View {
                         ),
                         showAlleleComment: true
                     )
-                    Text("Of course, if he/she has two straight alleles,\nthe hairline would be straight.")
+                    Text("Conversely, if he/she has two straight alleles,\nthe hairline will be straight.")
                 }
             }
         }

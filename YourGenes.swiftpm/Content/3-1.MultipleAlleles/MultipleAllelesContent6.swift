@@ -11,21 +11,17 @@ struct MultipleAllelesContent6: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("Now, let's see how alleles are involved to blood type.")
-                Text("There are three kind of alleles\n- A, B and O.")
+                Text("Now, let's see how alleles are involved in determining blood type.")
+                Text("There are three types of alleles\n: A, B, and O.")
                 HStack {
                     AlleleView<BloodType>(allele: BloodType.a)
                     AlleleView<BloodType>(allele: BloodType.b)
                     AlleleView<BloodType>(allele: BloodType.o)
                 }
-                Text("You may wonder\n- 'What? there were only two alleles before!'.")
-                Text("Yes. that's why the blood type inheritance is called 'Multiple Alleles'.")
+                Text("You may be wondering\n- 'Wait, there were only two alleles before!'.")
+                Text("This is because blood type inheritance is referred to as \"Multiple Alleles,\" which means there are more than two possible alleles for a given trait.")
                 VStack(spacing: 15) {
-                    Text("Except that, the other things are same.")
-                    VStack(alignment: .leading) {
-                        Text("- Everyone has two alleles")
-                        Text("- and the combination of them determines the blood type.")
-                    }
+                    Text("Everyone has two alleles, and the combination of these alleles determines their blood type.")
                 }
             }
         }

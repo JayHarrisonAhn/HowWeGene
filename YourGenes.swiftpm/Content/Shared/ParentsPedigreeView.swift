@@ -10,38 +10,37 @@ import SwiftUI
 struct ParentsPedigreeView<AlleleType: Allele>: View {
     let parents: ParentsPedigree<AlleleType>
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(
-                alignment: .center,
-                spacing: 0
-            ) {
-                GenotypeView(
-                    personView: {
-                        AlleleExpressionView<AlleleType>(expression: parents.dad.expression)
-                    },
-                    genotype: parents.dad,
-                    showAlleleComment: true
+        HStack(
+            alignment: .center,
+            spacing: 0
+        ) {
+            GenotypeView(
+                personView: {
+                    AlleleExpressionView<AlleleType>(expression: parents.dad.expression)
+                },
+                genotype: parents.dad,
+                showAlleleComment: true
+            )
+            .frame(minWidth: 150)
+            Rectangle()
+                .frame(minWidth: 10, maxWidth: 70, maxHeight: 3)
+            GenotypeView(
+                personView: {
+                    AlleleExpressionView<AlleleType>(expression: parents.mom.expression)
+                },
+                genotype: parents.mom,
+                showAlleleComment: true
+            ).frame(minWidth: 150)
+        }.overlay {
+            GeometryReader { proxy in
+                VStack(spacing: 0) {
+                    Spacer()
+                    Rectangle()
+                        .frame(width: 3, height: proxy.size.height / 2)
+                }.frame(
+                    width: proxy.size.width,
+                    height: proxy.size.height
                 )
-                Rectangle()
-                    .frame(maxWidth: 60, maxHeight: 3)
-                GenotypeView(
-                    personView: {
-                        AlleleExpressionView<AlleleType>(expression: parents.mom.expression)
-                    },
-                    genotype: parents.mom,
-                    showAlleleComment: true
-                )
-            }.overlay {
-                GeometryReader { proxy in
-                    VStack(spacing: 0) {
-                        Spacer()
-                        Rectangle()
-                            .frame(width: 3, height: proxy.size.height / 2)
-                    }.frame(
-                        width: proxy.size.width,
-                        height: proxy.size.height
-                    )
-                }
             }
         }
     }

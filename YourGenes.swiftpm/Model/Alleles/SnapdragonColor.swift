@@ -45,6 +45,14 @@ enum SnapdragonColor: Allele {
     var title: String {
         switch self {
         case .red:
+            return "R"
+        case .white:
+            return "W"
+        }
+    }
+    var description: String {
+        switch self {
+        case .red:
             return "Red"
         case .white:
             return "White"

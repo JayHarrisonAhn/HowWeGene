@@ -11,7 +11,7 @@ struct IncompleteDominanceContent3: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("The answer is : there are only two alleles.\nRed and white.")
+                Text("This phenomenon is due to the fact that Snapdragon flowers have only two alleles - Red and White.")
                 HStack {
                     AlleleView<SnapdragonColor>(
                         allele: SnapdragonColor.red,
@@ -22,7 +22,7 @@ struct IncompleteDominanceContent3: View {
                         showComment: true
                     )
                 }
-                Text("Of course, a flower that has only a single kind of allele has the exact color it has.")
+                Text("A flower that has two identical alleles will be the same color,\nbut those with different alleles can show varying colors.")
                 HStack {
                     GenotypeView(
                         personView: {
