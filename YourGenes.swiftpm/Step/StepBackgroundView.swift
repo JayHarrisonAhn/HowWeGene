@@ -22,7 +22,7 @@ struct StepBackgroundView<Content: View>: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Image("dna")
+                        Image("background_dna")
                             .resizable()
                             .scaledToFit()
                             .frame(

@@ -12,17 +12,17 @@ struct IncompleteDominanceContent2: View {
         ContentScrollableView {
             VStack(spacing: 30) {
                 HStack {
-                    Image("snapdragon_red")
+                    Image("snapdragon_pedigree_red")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: 200)
-                    Image("snapdragon_white")
+                    Image("snapdragon_pedigree_white")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: 200)
                 }
                 Text("If both parents have either red or white color, their children will have the same color as their parents.")
-                Image("snapdragon_pink")
+                Image("snapdragon_pedigree_pink")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 200)

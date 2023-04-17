@@ -32,7 +32,7 @@ struct ContentScrollableView<Content: View>: View {
 struct TutorialContentBase_Previews: PreviewProvider {
     static var previews: some View {
         ContentScrollableView {
-            Image("dna")
+            Image("background_dna")
                 .resizable()
                 .frame(width: 300, height: 300)
         }
