@@ -13,7 +13,11 @@ struct CompleteDominanceQuiz: View {
     var body: some View {
         StepBackgroundView {
             ContentScrollableView {
-                GeneQuizView<WidowsPeak>(parents: ParentsPedigree.random(), turnToNextStep: turnToNextStep)
+                GeneQuizView<WidowsPeak>(
+                    parents: ParentsPedigree.random(),
+                    currentStep: .completeDominanceQuiz,
+                    turnToNextStep: turnToNextStep
+                )
             }
         }
     }

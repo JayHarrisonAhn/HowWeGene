@@ -29,7 +29,11 @@ struct GeneQuizStep: View {
             VStack {
                 switch viewModel.allele {
                 case is WidowsPeak.Type:
-                    GeneQuizView<WidowsPeak>(parents: ParentsPedigree.random(), turnToNextStep: viewModel.changeQuiz)
+                    GeneQuizView<WidowsPeak>(
+                        parents: ParentsPedigree.random(),
+                        currentStep: nil,
+                        turnToNextStep: viewModel.changeQuiz
+                    )
                 default:
                     EmptyView()
                 }

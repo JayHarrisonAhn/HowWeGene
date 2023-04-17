@@ -9,6 +9,7 @@ import SwiftUI
 
 class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
     let turnToNextStep: (()->Void)?
+    let currentStep: MainViewModel.Step?
     let checkingExpressions: [AlleleType.Expression] = AlleleType.Expression.allCases.map {$0}
     @Published var parents: ParentsPedigree<AlleleType>
     @Published var selections: [Bool]
@@ -18,11 +19,13 @@ class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
     
     init(
         parents: ParentsPedigree<AlleleType>,
+        currentStep: MainViewModel.Step?,
         turnToNextStep: (()->Void)?
     ) {
         self.parents = parents
         self.selections = AlleleType.Expression.allCases.map { _ in return false }
         self.turnToNextStep = turnToNextStep
+        self.currentStep = currentStep
     }
     
     var isCorrect: Bool {
@@ -78,13 +81,19 @@ class GeneQuizViewModel<AlleleType: Allele>: ObservableObject {
 
 struct GeneQuizView<AlleleType: Allele>: View {
     @StateObject var viewModel: GeneQuizViewModel<AlleleType>
+    @EnvironmentObject var environment: YGEnvironment
     
     init(
         parents: ParentsPedigree<AlleleType>,
+        currentStep: MainViewModel.Step?,
         turnToNextStep: (()->Void)?
     ) {
         self._viewModel = StateObject(
-            wrappedValue: GeneQuizViewModel<AlleleType>(parents: parents, turnToNextStep: turnToNextStep)
+            wrappedValue: GeneQuizViewModel<AlleleType>(
+                parents: parents,
+                currentStep: currentStep,
+                turnToNextStep: turnToNextStep
+            )
         )
     }
     
@@ -196,21 +205,34 @@ struct GeneQuizView<AlleleType: Allele>: View {
             }
             
         } else {
-            Button("Check the answer") {
-                if viewModel.showAnswer {
-                    viewModel.hideAnswer()
-                } else {
-                    viewModel.checkAnswer()
-                }
-            }
+            Button(
+                "Check the answer",
+                action: checkAnswer
+            )
             .buttonStyle(.bordered)
             .foregroundColor(.accentColor.opacity(0.8))
+        }
+    }
+    
+    func checkAnswer() {
+        if viewModel.showAnswer {
+            viewModel.hideAnswer()
+        } else {
+            viewModel.checkAnswer()
+            if viewModel.isCorrect,
+               let currentStep = viewModel.currentStep {
+                environment.stepProgress[currentStep] = true
+            }
         }
     }
 }
 
 struct GeneQuizView_Previews: PreviewProvider {
     static var previews: some View {
-        GeneQuizView<WidowsPeak>(parents: .random(), turnToNextStep: nil)
+        GeneQuizView<WidowsPeak>(
+            parents: .random(),
+            currentStep: nil,
+            turnToNextStep: nil
+        )
     }
 }

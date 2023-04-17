@@ -13,7 +13,11 @@ struct IncompleteDominanceQuiz: View {
     var body: some View {
         StepBackgroundView {
             ContentScrollableView {
-                GeneQuizView<SnapdragonColor>(parents: ParentsPedigree.random(), turnToNextStep: turnToNextStep)
+                GeneQuizView<SnapdragonColor>(
+                    parents: ParentsPedigree.random(),
+                    currentStep: .incompleteDominanceQuiz,
+                    turnToNextStep: turnToNextStep
+                )
             }
         }
     }

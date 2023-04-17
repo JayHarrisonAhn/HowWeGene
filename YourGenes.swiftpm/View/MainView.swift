@@ -42,36 +42,14 @@ class MainViewModel: ObservableObject {
             }
         }
     }
-    
-    func moveToNextStep() {
-        withAnimation(.easeInOut) { [weak self] in
-            guard let self = self else { return }
-            switch self.currentStep {
-            case .tutorial:
-                self.currentStep = .completeDominance
-            case .completeDominance:
-                self.currentStep = .completeDominanceQuiz
-            case .completeDominanceQuiz:
-                self.currentStep = .incompleteDominance
-            case .incompleteDominance:
-                self.currentStep = .incompleteDominanceQuiz
-            case .incompleteDominanceQuiz:
-                self.currentStep = .multipleAlleles
-            case .multipleAlleles:
-                self.currentStep = .multipleAllelesQuiz
-            case .multipleAllelesQuiz:
-                break
-            case nil:
-                break
-            }
-        }
-    }
 }
 
 @available(iOS 16.0, *)
 struct MainView: View {
     @StateObject var viewModel = MainViewModel()
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    
+    @EnvironmentObject var environment: YGEnvironment
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -99,11 +77,25 @@ struct MainView: View {
             isPresented: $viewModel.presentCompletionView,
             content: MainCompletionView.init
         )
+        .onChange(of: environment.stepProgress) { _ in
+            if environment.isStepProgressCompleted {
+                viewModel.presentCompletionView = true
+            }
+        }
     }
     
     @ViewBuilder
     func listCell(list: MainViewModel.Step) -> some View {
-        NavigationLink(list.title, value: list)
+        NavigationLink(value: list) {
+            HStack {
+                if environment.stepProgress[list] == true {
+                    Image(systemName: "largecircle.fill.circle")
+                } else {
+                    Image(systemName: "circle")
+                }
+                Text(list.title)
+            }
+        }
     }
     
     @ViewBuilder
@@ -126,20 +118,46 @@ struct MainView: View {
     private func stepView(_ step: MainViewModel.Step) -> some View {
         switch step {
         case .tutorial:
-            TutorialStep(turnToNextStep: viewModel.moveToNextStep)
+            TutorialStep(turnToNextStep: moveToNextStep)
         case .completeDominance:
-            CompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
+            CompleteDominanceStep(turnToNextStep: moveToNextStep)
         case .completeDominanceQuiz:
-            CompleteDominanceQuiz(turnToNextStep: viewModel.moveToNextStep)
+            CompleteDominanceQuiz(turnToNextStep: moveToNextStep)
         case .incompleteDominance:
-            IncompleteDominanceStep(turnToNextStep: viewModel.moveToNextStep)
+            IncompleteDominanceStep(turnToNextStep: moveToNextStep)
         case .incompleteDominanceQuiz:
-            IncompleteDominanceQuiz(turnToNextStep: viewModel.moveToNextStep)
+            IncompleteDominanceQuiz(turnToNextStep: moveToNextStep)
         case .multipleAlleles:
-            MultipleAllelesStep(turnToNextStep: viewModel.moveToNextStep)
+            MultipleAllelesStep(turnToNextStep: moveToNextStep)
         case .multipleAllelesQuiz:
             MultipleAllelesQuiz {
                 
+            }
+        }
+    }
+    
+    func moveToNextStep() {
+        withAnimation(.easeInOut) {
+            if let currentStep = viewModel.currentStep {
+                environment.stepProgress[currentStep] = true
+            }
+            switch viewModel.currentStep {
+            case .tutorial:
+                viewModel.currentStep = .completeDominance
+            case .completeDominance:
+                viewModel.currentStep = .completeDominanceQuiz
+            case .completeDominanceQuiz:
+                viewModel.currentStep = .incompleteDominance
+            case .incompleteDominance:
+                viewModel.currentStep = .incompleteDominanceQuiz
+            case .incompleteDominanceQuiz:
+                viewModel.currentStep = .multipleAlleles
+            case .multipleAlleles:
+                viewModel.currentStep = .multipleAllelesQuiz
+            case .multipleAllelesQuiz:
+                break
+            case nil:
+                break
             }
         }
     }

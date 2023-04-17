@@ -13,7 +13,11 @@ struct MultipleAllelesQuiz: View {
     var body: some View {
         StepBackgroundView {
             ContentScrollableView {
-                GeneQuizView<BloodType>(parents: ParentsPedigree.random(), turnToNextStep: turnToNextStep)
+                GeneQuizView<BloodType>(
+                    parents: ParentsPedigree.random(),
+                    currentStep: .multipleAllelesQuiz,
+                    turnToNextStep: turnToNextStep
+                )
             }
         }
     }
