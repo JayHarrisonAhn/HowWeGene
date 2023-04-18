@@ -12,12 +12,21 @@ struct IncompleteDominanceQuiz: View {
     
     var body: some View {
         StepBackgroundView {
-            ContentScrollableView {
-                GeneQuizView<SnapdragonColor>(
-                    parents: ParentsPedigree.random(),
-                    currentStep: .incompleteDominanceQuiz,
-                    turnToNextStep: turnToNextStep
+            VStack {
+                ContentScrollableView {
+                    GeneQuizView<SnapdragonColor>(
+                        parents: ParentsPedigree.random(),
+                        currentStep: .incompleteDominanceQuiz,
+                        turnToNextStep: turnToNextStep
+                    )
+                }
+                Spacer()
+                Link(
+                    "All Khan Academy content is available for free\nat www.khanacademy.org",
+                    destination: URL(string: "https://support.khanacademy.org/hc/en-us/articles/202263034-What-is-Khan-Academy-s-Trademark-and-Brand-Usage-Policy-")!
                 )
+                .font(.caption2)
+                .buttonStyle(.plain)
             }
         }
     }
