@@ -11,10 +11,47 @@ struct MultipleAllelesContent8: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 50) {
-                VStack(spacing: 10) {
-                    Text("Consider the example of a person with A and O alleles:")
-                    Text("- Allele A produces A antigen.")
-                    Text("- Allele O produces nothing.")
+                HStack(spacing: 20) {
+                    GenotypeView(
+                        personView: {
+                            Image(systemName: "person")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 30)
+                                .font(.body.weight(.light))
+                        },
+                        genotype: Genotype<BloodType>(
+                            firstAllele: .a,
+                            secondAllele: .o
+                        ),
+                        showAlleleComment: true
+                    )
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Consider the example of a person with A and O alleles:")
+                        Text("- Allele A produces A antigen.")
+                        Text("- Allele O produces nothing.")
+                    }.multilineTextAlignment(.leading)
+                }
+                HStack(spacing: 20) {
+                    GenotypeView(
+                        personView: {
+                            Image(systemName: "person")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 30)
+                                .font(.body.weight(.light))
+                        },
+                        genotype: Genotype<BloodType>(
+                            firstAllele: .a,
+                            secondAllele: .b
+                        ),
+                        showAlleleComment: true
+                    )
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("The other example is : a person with A and B alleles:")
+                        Text("- Allele A produces A antigen.")
+                        Text("- Allele B produces B antigen.")
+                    }.multilineTextAlignment(.leading)
                 }
                 HStack(spacing: 10) {
                     AlleleView<BloodType>(

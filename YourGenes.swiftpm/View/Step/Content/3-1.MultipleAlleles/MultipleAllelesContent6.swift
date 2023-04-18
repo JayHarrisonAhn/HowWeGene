@@ -19,9 +19,9 @@ struct MultipleAllelesContent6: View {
                     AlleleView<BloodType>(allele: BloodType.o)
                 }
                 Text("You may be wondering\n- 'Wait, there were only two alleles before!'.")
-                Text("This is because blood type inheritance is referred to as \"Multiple Alleles,\" which means there are more than two possible alleles for a given trait.")
+                Text("This is why blood type inheritance is referred to as \"Multiple Alleles,\" which means there are more than two possible alleles for a given trait.")
                 VStack(spacing: 15) {
-                    Text("Everyone has two alleles, and the combination of these alleles determines their blood type.")
+                    Text("It is not different that everyone has two alleles. And the combination of the two alleles determines their blood type.")
                 }
             }
         }

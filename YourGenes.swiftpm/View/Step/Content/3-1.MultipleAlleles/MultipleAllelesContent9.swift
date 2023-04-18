@@ -24,7 +24,7 @@ struct MultipleAllelesContent9: View {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(.primary.opacity(0.4), lineWidth: 1)
                 )
-                Text("If you feel like you've understood it,\nlet's move on to the quiz section.")
+                Text("If you understood it, congratulations! You did it!\nLet's move on to the quiz section.")
             }
         }
     }

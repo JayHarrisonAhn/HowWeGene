@@ -11,8 +11,8 @@ struct IncompleteDominanceContent4: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("And the secret of pink color is the key to solve this phenomenon.")
-                Text("A flower that has two different alleles has pink color.")
+                Text("And the secret of pink color is the key to understand incomplete dominance rule.")
+                Text("When a flower has red and white allele pair, it results in a pink color.")
                 GenotypeView(
                     personView: {
                         Image("snapdragon_single_pink")

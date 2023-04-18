@@ -29,7 +29,7 @@ struct MultipleAllelesContent1: View {
                 }
                 .padding()
                 .border(blocked ? .red : .clear)
-                Text("If so, please select it from the buttons provided above. If you don't know your blood type, don't worry; simply select any button.")
+                Text("If so, please select it from the buttons provided above.\n\nIf you don't know your blood type, don't worry; simply select any button.")
             }
         }
     }

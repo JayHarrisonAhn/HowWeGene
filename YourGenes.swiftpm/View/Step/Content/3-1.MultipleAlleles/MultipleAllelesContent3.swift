@@ -11,7 +11,7 @@ struct MultipleAllelesContent3: View {
     var body: some View {
         ContentScrollableView {
             VStack(spacing: 30) {
-                Text("In fact, the inheritance of blood type is a bit complex,\nso let's take a closer look.")
+                Text("In fact, the inheritance of blood type is a bit complex,\nso let's take a closer look about multiple alleles rule.")
             }
         }
     }

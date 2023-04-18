@@ -14,7 +14,7 @@ struct MultipleAllelesContent4: View {
                 Text("First, let's briefly define what blood type actually is.")
                 VStack(spacing: 5) {
                     Text("In human blood, there are substances called antigens,\nwhich are produced by the body.")
-                    Text("You don't need to learn about what antigen means in this course.\nIt's just something that your body creates.")
+                    Text("You don't need to learn about what antigen is in this course.\nIt's just something that your body creates.")
                         .font(.caption)
                         .opacity(0.5)
                 }
@@ -27,7 +27,7 @@ struct MultipleAllelesContent4: View {
                         .scaledToFit()
                         .frame(maxWidth: 70)
                 }.frame(maxWidth: 170)
-                Text("For ABO blood types, there are two types of antigens: A and B.")
+                Text("For ABO blood types, there are two types of antigens:\nA and B.")
             }
         }
     }

@@ -59,7 +59,7 @@ struct CompleteDominanceContent1: View {
                     .frame(width: 100)
                     .buttonStyle(.bordered)
                 }.border(blocked ? .red : .clear)
-                Text("To identify which shape your forehead resembles,\nsimply look in the mirror and choose the appropriate button above.")
+                Text("Look in the mirror and select the button that matches your shape.")
             }
         }
     }

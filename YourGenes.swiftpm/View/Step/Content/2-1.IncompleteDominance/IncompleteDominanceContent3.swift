@@ -22,7 +22,7 @@ struct IncompleteDominanceContent3: View {
                         showComment: true
                     )
                 }
-                Text("A flower that has two identical alleles will be the same color,\nbut those with different alleles can show varying colors.")
+                Text("A flower that has two identical alleles will be the same color.")
                 HStack {
                     GenotypeView(
                         personView: {
@@ -49,6 +49,7 @@ struct IncompleteDominanceContent3: View {
                         showAlleleComment: true
                     )
                 }
+                Text("When both parents have identical alleles, children can only inherit the same pair from them, resulting the same trait as their parents.\nIn this case, this is why children between both red or white have the same color as their parents.")
             }
         }
     }
